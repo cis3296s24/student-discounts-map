@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #df3a31;
+}
+
+.nav-item {
+    color: white;
+    padding: 0.1rem 0.3rem;
+    margin-left: 0.5rem;
+}
+
+.container-fluid {
+    margin-left: 12px;
+    color: white;
+}
