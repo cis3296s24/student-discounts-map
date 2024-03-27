@@ -8,19 +8,19 @@ The Student Discount Map is for students who are looking to save money and find 
 
 # Personas 1:
 
-Emily Zhang, a 20-year-old biology student, is looking for a user-friendly app to quickly find reliable and clearly described local discounts on food, textbooks, and hiking gear to manage her tight budget alongside her studies and part-time job.
+Emily Zhang, a diligent 18-year-old first-year college student majoring in Biology, is on a quest to maintain her budget while navigating through her new life away from home. Living off-campus in a small apartment, Emily struggles to balance her academics, part-time job at the local library, and her personal hobbies, including photography and hiking. She relies on her smartphone for almost everything - from managing her schedule to keeping in touch with family. Emily seeks a straightforward, efficient app that can help her discover student discounts on essential items like groceries, textbooks, and photography supplies without wasting time she doesn't have.
 
 # Personas 2:
 
-Marcus Johnson, a 22-year-old MBA student, seeks an advanced digital platform where he can efficiently filter for professional attire and electronics discounts, relying heavily on detailed user reviews to ensure the quality and authenticity of deals.
+Marcus Johnson, a 35-year-old working professional returning to education to pursue an MBA, is acutely aware of the financial strain of balancing tuition fees, family responsibilities, and maintaining a professional image. With extensive experience in the corporate world and a family to support, Marcus is not the typical student; he is tech-savvy and demands efficiency and reliability from the digital services he uses. He needs a platform where he can quickly filter through deals on professional attire and tech gadgets, read in-depth reviews to assess value, and make informed decisions without compromising his time or budget.
 
 # Personas 3:
 
-Laura Smith, a 24-year-old art history major, wants a mobile-friendly service to discover and share unique, artsy deals and discounts within a community that appreciates local coffee.
+Laura Smith, a 28-year-old art history major, immerses herself in the cultural scene of her city while juggling the demands of academic life and a part-time job at a local art museum. Passionate about supporting local art scenes and small businesses, Laura is always on the lookout for discounts and deals that align with her artistic and cultural interests, such as art supplies, gallery events, and unique local eateries. She desires a community-driven app where she can share and discover hidden gems within her city, emphasizing user-generated content and experiences to build a supportive network of like-minded students.
 
 # Personas 4:
 
-Alex Torres, a 19-year-old freshman with a keen interest in sports and fitness, is in need of a straightforward, engaging tool to locate and evaluate student discounts on gym memberships, sports apparel, and healthy eating options, influenced by peer reviews and social sharing features.
+Alex Torres, a 23-year-old junior with a major in Sports Science, is passionate about staying fit and leading a healthy lifestyle. As a collegiate athlete, Alex faces the constant challenge of finding affordable options to maintain his fitness regime, including gym memberships, sports gear, and nutritious food. Residing in an apartment near campus with fellow athletes, he seeks a user-friendly platform that not only helps him find relevant deals but also enables him to share discoveries with his teammates. Alex values peer reviews and social sharing features that can help him and his friends make the best choices for their athletic needs while managing their student budgets.
 
 ![This is a screenshot.](images.png)
 
