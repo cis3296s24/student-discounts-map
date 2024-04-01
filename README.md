@@ -55,3 +55,10 @@ Follow this project board to know the latest status of the project: [http://...]
 - Specify additional library to download if needed
 - What file and target to compile and run.
 - What is expected to happen when the app start.
+
+### Risk Table
+
+
+| Risk        |  Category           | Probability  | Impact|RMMM|
+| ------------- |:-------------:| :-----:| :-----:| :-------------:|
+| VPC rental costs too much.      | CU | %30 |3 |Turning off VPC when not in use.|
