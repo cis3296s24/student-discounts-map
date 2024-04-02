@@ -4,7 +4,7 @@ This document proposes a web application where users are able to share locations
 
 # Vision Statement
 
-The Student Discount Map is for students who are looking to save money and find killer deals/discounts in their area. Student Discount Map is based on services like honey and other discount finding software, that make the effort of saving money while spending seemless. Unlike many of its competitors the "deal" found with but populated by users, who can leave a revieve and desription of the deal they found. Our map product proviodes real experiences and reviews to ensure users are getting the most accurate information.
+The Student Discount Map is a valuable resource designed specifically for students eager to uncover substantial savings and attractive discounts within their vicinity. It draws inspiration from popular services such as Honey, facilitating a seamless money-saving experience for its users. This platform sets itself apart from competitors by relying on user-generated content, allowing students to share and review deals they've discovered. This approach not only enriches the database with a diverse range of discounts but also ensures the authenticity and reliability of the information provided, thanks to the real-life experiences and evaluations contributed by users.
 
 # Personas 1:
 
@@ -58,7 +58,6 @@ Follow this project board to know the latest status of the project: [http://...]
 
 ### Risk Table
 
-
-| Risk        |  Category           | Probability  | Impact|RMMM|
-| ------------- |:-------------:| :-----:| :-----:| :-------------:|
-| VPC rental costs too much.      | CU | %30 |3 |Turning off VPC when not in use.|
+| Risk                       | Category | Probability | Impact |               RMMM               |
+| -------------------------- | :------: | :---------: | :----: | :------------------------------: |
+| VPC rental costs too much. |    CU    |     %30     |   3    | Turning off VPC when not in use. |
