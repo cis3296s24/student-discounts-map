@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap';
 import Layout from "./components/Layout";
 import Home from './components/Home';
 import Map from './components/Map';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from './reportWebVitals';
 
@@ -17,6 +19,8 @@ const router = (
                     <Route index element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/map" element={<Map />} />
+                    <Route path="/login" element={<Login />}/>
+                    <Route path="/signup" element={<Signup />}/>
                     {/* Catch-all route for unmatched routes */}
                     <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for unmatched routes */}
                 </Route>
