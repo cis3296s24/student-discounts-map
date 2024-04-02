@@ -4,7 +4,9 @@ This document proposes a web application where users are able to share locations
 
 # Vision Statement
 
-The Student Discount Map is for students who are looking to save money and find killer deals/discounts in their area. Student Discount Map is based on services like honey and other discount finding software, that make the effort of saving money while spending seemless. Unlike many of its competitors the "deal" found with but populated by users, who can leave a revieve and desription of the deal they found. Our map product proviodes real experiences and reviews to ensure users are getting the most accurate information.
+FOR students looking for up-to-date information on student discounts and community-sourced information on deals, discounts, and locations, THE Student Discounts Map is an interactive web application THAT provides a platform for users to share, discover, and review student discounts and other deals based on geographical locations, in a community setting.
+
+UNLIKE existing discount websites, which often lack community engagement and interactive mapping features, OUR product encourages users themselves to contribute, rate submissions, and explore discounts conveniently on an interactive map, enhancing the overall user experience, as well as allowing for a self-sustaining environment for active users.
 
 # Personas 1:
 
@@ -22,36 +24,51 @@ Laura Smith, a 24-year-old art history major, wants a mobile-friendly service to
 
 Alex Torres, a 19-year-old freshman with a keen interest in sports and fitness, is in need of a straightforward, engaging tool to locate and evaluate student discounts on gym memberships, sports apparel, and healthy eating options, influenced by peer reviews and social sharing features.
 
-![This is a screenshot.](images.png)
 
 # How to run
-
-Provide here instructions on how to use your application.
-
-- Download the latest binary from the Release section on the right on GitHub.
-- On the command line uncompress using
-
-```
-tar -xzf
+Navigate to the root directory of the project
+```bash
+cd student-discounts-map
 ```
 
-- On the command line run with
-
+## Establishing Database:
+1. Install MySQL
+2. Create a database called `StudentDiscountsMap`
+3. Navigate to the `database/` directory
+```bash
+cd database
 ```
-./hello
+4. Run the setup.sql script located in `database/setup.sql/` to create the necessary tables and populate the database.
+5. Return to the root directory of the project
+```bash
+cd ..
 ```
 
-- You will see Hello World! on your terminal.
+## Running the Backend:
+1. Navigate to the `backend/` directory
+```bash
+cd backend
+```
+2. Run the main.py script located in `api/main.py/` to start the backend server.
+```bash
+python api/main.py
+```
+3. Return to the root directory of the project
+```bash
+cd ..
+```
 
-# How to contribute
-
-Follow this project board to know the latest status of the project: [http://...]([http://...])
-
-### How to build
-
-- Use this github repository: ...
-- Specify what branch to use for a more stable release or for cutting edge development.
-- Use InteliJ 11
-- Specify additional library to download if needed
-- What file and target to compile and run.
-- What is expected to happen when the app start.
+## Running the Frontend:
+1. Navigate to the `frontend/` directory
+```bash
+cd frontend
+```
+2. Run the following command to install the necessary dependencies
+```bash
+npm install
+```
+3. Run the following command to start the frontend server
+```bash
+npm start
+```
+4. Open a web browser and navigate to `http://localhost:3000/` to view the application.
