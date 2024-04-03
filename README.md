@@ -4,57 +4,85 @@ This document proposes a web application where users are able to share locations
 
 # Vision Statement
 
-The Student Discount Map is a valuable resource designed specifically for students eager to uncover substantial savings and attractive discounts within their vicinity. It draws inspiration from popular services such as Honey, facilitating a seamless money-saving experience for its users. This platform sets itself apart from competitors by relying on user-generated content, allowing students to share and review deals they've discovered. This approach not only enriches the database with a diverse range of discounts but also ensures the authenticity and reliability of the information provided, thanks to the real-life experiences and evaluations contributed by users.
+FOR students looking for up-to-date information on student discounts and community-sourced information on deals, discounts, and locations, THE Student Discounts Map is an interactive web application THAT provides a platform for users to share, discover, and review student discounts and other deals based on geographical locations, in a community setting.
 
-# Personas 1:
+UNLIKE existing discount websites, which often lack community engagement and interactive mapping features, OUR product encourages users themselves to contribute, rate submissions, and explore discounts conveniently on an interactive map, enhancing the overall user experience, as well as allowing for a self-sustaining environment for active users.
 
-Emily Zhang, a diligent 18-year-old first-year college student majoring in Biology, is on a quest to maintain her budget while navigating through her new life away from home. Living off-campus in a small apartment, Emily struggles to balance her academics, part-time job at the local library, and her personal hobbies, including photography and hiking. She relies on her smartphone for almost everything - from managing her schedule to keeping in touch with family. Emily seeks a straightforward, efficient app that can help her discover student discounts on essential items like groceries, textbooks, and photography supplies without wasting time she doesn't have.
+# Personas
 
-# Personas 2:
+## Persona 1:
+Emily Zhang, an 18-year-old biology student Freshman at the College of Science and Technology in Temple University, recently came to Philadelphia from her hometown in Scranton, Pennsylvania. She is unfamiliar with the landscape in Philadelphia and does not know of the local restaurants in her new area. As a student, she frequently struggles balancing eating outside with budgeting her limited finances. She actively browses different websites to look for student discounts, but often finds misleading, expired, or inaccurate information on those discounts. Upon finding the Students Discounts Map, she is able to access student discounts without struggle and get up to date community verified information.
 
-Marcus Johnson, a 35-year-old working professional returning to education to pursue an MBA, is acutely aware of the financial strain of balancing tuition fees, family responsibilities, and maintaining a professional image. With extensive experience in the corporate world and a family to support, Marcus is not the typical student; he is tech-savvy and demands efficiency and reliability from the digital services he uses. He needs a platform where he can quickly filter through deals on professional attire and tech gadgets, read in-depth reviews to assess value, and make informed decisions without compromising his time or budget.
+## Persona 2:
+Marcus Johnson is a 26-year-old MBA student at the Fox School of Business in Temple University. He's originally from Chicago and moved to Philadelphia for his graduate studies. Marcus is a meticulous planner, always looking for ways to optimize his time and resources. With a busy schedule filled with classes, internships, and networking events, Marcus values efficiency and reliability in the tools he uses. He's particularly interested in finding discounts on professional attire and electronics, as he wants to maintain a polished appearance without breaking the bank. Marcus relies heavily on user reviews to ensure the quality and authenticity of deals, as he believes in making informed decisions. He is tech-savvy and appreciates advanced digital platforms that offer practical visual representations of the information he is looking for.
 
-# Personas 3:
+## Persona 3:
+Laura Smith is a 51-year-old single parent living in Philadelphia. Her son, Michael, is currently enrolled as a student at the Community College of Philadelphia. Laura works as a receptionist at a local law firm, where she strives to make ends meet and provide for her family. As a single parent working full-time, Laura's schedule is often busy and hectic. She juggles multiple responsibilities, from managing household expenses to supporting her son's academic endeavors. Finding the time to search for student discounts and deals can be challenging, especially when faced with competing priorities. The convenience of the Student Discounts Map allowed Laura to rely on the application as a valuable resource for helping her son navigate the financial challenges of college life.
 
-Laura Smith, a 28-year-old art history major, immerses herself in the cultural scene of her city while juggling the demands of academic life and a part-time job at a local art museum. Passionate about supporting local art scenes and small businesses, Laura is always on the lookout for discounts and deals that align with her artistic and cultural interests, such as art supplies, gallery events, and unique local eateries. She desires a community-driven app where she can share and discover hidden gems within her city, emphasizing user-generated content and experiences to build a supportive network of like-minded students.
+## Persona 4:
+Thandiwe Mbeki is a 21-year-old female international student from South Africa pursuing her undergraduate degree in Computer Science at the University of Pennsylvania. Having grown up in Johannesburg, South Africa, Thandiwe faces unique challenges related to adjusting to life in a new country. She may encounter language barriers, cultural differences, and unfamiliar academic systems that require her to adapt and learn quickly. Thandiwe discovers the Student Discounts Map as a helpful tool for navigating life in Philadelphia on a student budget. She appreciates the platform's user-friendly interface and comprehensive database of discounts and deals available in the area. Thandiwe uses the application to find discounts on everyday essentials such as groceries, transportation, and dining options, allowing her to save money while exploring the city. She also enjoys connecting with other students through the platform's community features, where she can share tips and recommendations with her peers.
 
-# Personas 4:
+## Persona 5:
+Jamal Patel is a 16-year-old high school student attending Preparatory Charter High School in Philadelphia. He is a lifelong resident of the city, growing up in the vibrant and diverse neighborhoods of West Philadelphia. Jamal works part-time as a babysitter for his neighbor, and has a very limited spending budget each month. Jamal discovered the Student Discounts Map as a helpful tool for saving money and exploring his city on a budget. He appreciates the platform's user-friendly interface and comprehensive database of discounts and deals available to students in Philadelphia. Jamal uses the application to find discounts on school supplies, clothing, and entertainment options, allowing him to stretch his limited resources further. Jamal also discovered an interest for the arts through the website, now having an interest in attending museums and theaters.
 
-Alex Torres, a 23-year-old junior with a major in Sports Science, is passionate about staying fit and leading a healthy lifestyle. As a collegiate athlete, Alex faces the constant challenge of finding affordable options to maintain his fitness regime, including gym memberships, sports gear, and nutritious food. Residing in an apartment near campus with fellow athletes, he seeks a user-friendly platform that not only helps him find relevant deals but also enables him to share discoveries with his teammates. Alex values peer reviews and social sharing features that can help him and his friends make the best choices for their athletic needs while managing their student budgets.
+# Initial List of User Features
 
-![This is a screenshot.](images.png)
+1. User Registration: Users can create an account to access the platform's features and functionalities.
+2. User Login: Registered users can log in to their accounts to access personalized content and settings.
+3. Submit Discount: Users can submit new discounts and deals to the platform, including details such as location, description, and validity.
+4. Browse Discounts: Users can browse and search for discounts and deals based on categories, locations, and keywords.
+5. Interactive Map: Users can view discounts and deals on an interactive map, allowing for visual exploration and navigation.
+6. View Discount Details: Users can view detailed information about each discount, including descriptions, terms, and user reviews. 
+7. Rate Discounts: Users can rate and review discounts based on their experience, usefulness, and accuracy.
+8. Edit Discounts: Users can edit and update discount information to ensure accuracy and relevance.
 
 # How to run
-
-Provide here instructions on how to use your application.
-
-- Download the latest binary from the Release section on the right on GitHub.
-- On the command line uncompress using
-
-```
-tar -xzf
+Navigate to the root directory of the project
+```bash
+cd student-discounts-map
 ```
 
-- On the command line run with
-
+## Establishing Database:
+1. Install MySQL
+2. Create a database called `StudentDiscountsMap`
+3. Navigate to the `database/` directory
+```bash
+cd database
 ```
-./hello
+4. Run the setup.sql script located in `database/setup.sql/` to create the necessary tables and populate the database.
+5. Return to the root directory of the project
+```bash
+cd ..
 ```
 
-- You will see Hello World! on your terminal.
+## Running the Backend:
+1. Navigate to the `backend/` directory
+```bash
+cd backend
+```
+2. Run the main.py script located in `api/main.py/` to start the backend server.
+```bash
+python api/main.py
+```
+3. Return to the root directory of the project
+```bash
+cd ..
+```
 
-# How to contribute
-
-Follow this project board to know the latest status of the project: [http://...]([http://...])
-
-### How to build
-
-- Use this github repository: ...
-- Specify what branch to use for a more stable release or for cutting edge development.
-- Use InteliJ 11
-- Specify additional library to download if needed
-- What file and target to compile and run.
-- What is expected to happen when the app start.
+## Running the Frontend:
+1. Navigate to the `frontend/` directory
+```bash
+cd frontend
+```
+2. Run the following command to install the necessary dependencies
+```bash
+npm install
+```
+3. Run the following command to start the frontend server
+```bash
+npm start
+```
+4. Open a web browser and navigate to `http://localhost:3000/` to view the application.
 
 ### Risk Table
 
@@ -84,4 +112,3 @@ Follow this project board to know the latest status of the project: [http://...]
 - 2 - Severe
 - 3 - Marginal
 - 4 - Negligible
-
