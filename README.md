@@ -83,3 +83,32 @@ npm install
 npm start
 ```
 4. Open a web browser and navigate to `http://localhost:3000/` to view the application.
+
+### Risk Table
+
+| Risk                       | Category | Probability | Impact |               RMMM               |
+| -------------------------- | :------: | :---------: | :----: | :------------------------------: |
+| VPC rental exceeds budget. |    CU    |     %30     |   3    | Turning off VPC when not in use. |
+| Google Cloud SQL exceeds budget. |    CU    |     %30     |   3    | Switching to local file storage. |
+| Security certificates exceed budget. |    CU    |     %90     |   4    | Not purchasing certificates. |
+| Domain name exceeds budget. |    CU    |     %90     |   4    | Not purchasing domain name. |
+|Poor communication from disparate use of communication platforms| ST | %80 | 3 | Assigning a communication officer to update the team.|
+| Late submissions on assigned tasks. | ST | %40 | 1 | Use of effective time management skills. |
+| Poor integration of separate teams' codebases. | ST | %30| 2 | Assigning extra time during integration phase. |
+| Inexperience with React.js | ST | %10 | 4 | Teaching team members React.js. |
+| Performance issues with VPC. |   PS  | %20  | 2 | Switching to Amazon cloud. |
+| Difficulties working with map API. | ST | %30 | 3 | Switching to Google Maps. | 
+|Scope of features exceeds allotted time. | PS | %40 | 2 | Removing unnecessary features. |
+| Difficulties implementing customer login. | PS | %20 | 3 | Changing to anonymous submissions.|
+| Security concerns regarding customer login data. | PS | %20 | 3 | Changing to anonymous submissions.|
+|Fraudulent submissions are entered by users. | PS | %90 | 3 | Implement a vetting system.|
+|Duplicate submissions are entered by users. | PS | %90 | 4 | Combining duplicate submissions into one.|
+|Map pins persist past sale duration. | DE | %30 | 4 | Implementing a timeout system on pins.| 
+|User traffic exceeds expectations. | PS | %5 | 3 | Using a Cloud auto scaler.|
+
+
+## Impact values
+- 1 - Catastrophic
+- 2 - Severe
+- 3 - Marginal
+- 4 - Negligible
