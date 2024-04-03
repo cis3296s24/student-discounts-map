@@ -6,7 +6,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    //develop backend logic here for storing user logins
+    //develop backend logic here
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Login Attempt:", username, password);
@@ -15,8 +15,8 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className="mb-4">Login</h2>
+            <form onSubmit={handleSubmit} className="w-50 mx-auto">
                 <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
                     <input
@@ -39,7 +39,7 @@ const Login = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Login</button>
             </form>
         </div>
     );
