@@ -5,6 +5,6 @@ def connect():
     con = mysql.connector.connect(user="root",
                                   password="12345678",
                                   host="127.0.0.1",
-                                  database="ProofOfConcept")
+                                  database="StudentDiscountsMap")
 
     return con
