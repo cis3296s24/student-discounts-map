@@ -1,5 +1,5 @@
 {
-  "name": "proof-of-concept",
+  "name": "student-discounts-map",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,3 +38,4 @@
     ]
   }
 }
+
