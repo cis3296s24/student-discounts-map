@@ -1,15 +1,59 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useOutletContext} from "react-router-dom";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const { setJwtToken } = useOutletContext()
+    const { setIsAdmin } = useOutletContext()
+    const { setAlertClassName } = useOutletContext()
+    const { setAlertMessage } = useOutletContext()
+
     //develop backend logic here
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        /**DEBUG: REMOVE IN RELEASE**/
         console.log("Login Attempt:", username, password);
+
+        let payload = {
+            username: username,
+            password: password,
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(payload)
+        };
+
+        const backendUrl = 'http://localhost:5000';
+        const authenticateUrl = `${backendUrl}/authenticate`;
+
+        fetch(authenticateUrl, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if (data.error) {
+                    setAlertClassName("alert-danger");
+                    setAlertMessage(data.message);
+                } else {
+                    setJwtToken(data.access_token);
+                    setAlertClassName("d-none");
+                    setAlertMessage("");
+                    navigate("/");
+                }
+            })
+            .catch((error) => {
+                setAlertClassName("alert-danger");
+                setAlertMessage("Error: " + error);
+                return;
+            })
         navigate("/home");
     };
 
