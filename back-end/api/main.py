@@ -24,6 +24,20 @@ def api_signup():
 
     return authentication.signup(con, username, password, email, userType)
 
+@app.route('/authenticate', methods=[ 'POST' ])
+def api_authenticate():
+    data = request.json
+
+    if data:
+        username = data.get('username')
+        password = data.get('password')
+    else:
+        return jsonify({"error": True,
+                        "message": "Invalid JSON payload"}), 400
+
+    return authentication.authenticate(con, username, password)
+
+
 if __name__ == '__main__':
     print("Server is starting...")
     print("Connecting to database...")
