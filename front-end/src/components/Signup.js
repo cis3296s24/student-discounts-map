@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate, useOutletContext} from 'react-router-dom';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +8,10 @@ const Signup = () => {
         password: '',
         confirmPassword: ''
     });
+
+    const { setAlertClassName } = useOutletContext()
+    const { setAlertMessage } = useOutletContext()
+
     const navigate = useNavigate();
 
     //update input field state
@@ -22,9 +26,52 @@ const Signup = () => {
     //backend signup logic
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        navigate('/login');
+
+        //check if password and confirm password match
+        if (formData.password !== formData.confirmPassword) {
+            setAlertClassName("alert-danger");
+            setAlertMessage("Passwords do not match");
+            return;
+        }
+
+        // build the request payload
+        let payload = {
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(payload)
+        };
+
+        const backendUrl = 'http://localhost:5000';
+
+        const signupUrl = `${backendUrl}/signup`;
+
+        fetch(signupUrl, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    setAlertClassName("alert-danger");
+                    setAlertMessage(data.message);
+                } else {
+                    setAlertClassName("alert-success");
+                    setAlertMessage("Signup successful");
+                    navigate('/login');
+                }
+            })
+            .catch((error) => {
+                setAlertClassName("alert-danger");
+                setAlertMessage("Signup failed");
+            })
     };
+
 
     return (
         <div className="signup-container">
