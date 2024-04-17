@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {wait} from "@testing-library/user-event/dist/utils";
+import {useOutletContext} from "react-router-dom";
 
 
 function SubmissionPage() {
@@ -11,10 +12,14 @@ function SubmissionPage() {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+    const [location, setLocation] = useState(null);
     const [discount, setDiscount] = useState('');
     const [submitterID, setSubmitterID] = useState('');
     const [lat, setLat] = useState(0);
     const [lng, setLng] = useState(0);
+
+    const { userID } = useOutletContext();
+    const { jwtToken } = useOutletContext();
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
@@ -27,6 +32,7 @@ function SubmissionPage() {
                 const { tempLat, tempLng } = data.results[0].geometry;
                 setLat(tempLat);
                 setLng(tempLng);
+                setLocation({ lat, lng }); // Set the map location to the geocoded coordinates
                 console.log(lat, lng)
             } else {
                 alert('Unable to geocode address.');
@@ -41,7 +47,7 @@ function SubmissionPage() {
     // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ establishmentName, address, city, state, zip, discount, submitterID, lat, lng });
+        console.log({ establishmentName, address, city, state, zip, location, discount, submitterID });
 
         // Perform the geocoding and update the map
         geocodeAddress().then(() => {
@@ -53,6 +59,13 @@ function SubmissionPage() {
             alert('Please enter a valid address.');
             return;
         }
+
+        // Check if the user is logged in
+        if (jwtToken === '') {
+            alert('Please log in to submit a review.');
+            return;
+        }
+        setSubmitterID(userID)
 
         // Build the request payload
         const payload = {
