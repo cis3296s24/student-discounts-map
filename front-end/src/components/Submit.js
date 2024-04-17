@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+
 function SubmissionPage() {
     // State variables to store form data
     const [name, setName] = useState('');
@@ -14,10 +15,34 @@ function SubmissionPage() {
     const [discount, setDiscount] = useState('');
     const [review, setReview] = useState('');
 
+    const geocodeAddress = async () => {
+        const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
+        const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
+    
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            if (data.results && data.results.length > 0) {
+                const { lat, lng } = data.results[0].geometry;
+                setLocation({ lat, lng }); // Set the map location to the geocoded coordinates
+            } else {
+                alert('Unable to geocode address.');
+                // Handle no results or invalid data
+            }
+        } catch (error) {
+            console.error('Geocoding error:', error);
+            alert('Error geocoding address. Please try again.');
+        }
+    };
+
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({ establishmentName, name, address, city, state, zip, location, discount, review });
+
+        // Perform the geocoding and update the map
+        geocodeAddress();
+
         // Clear the form fields after submission
         setName('');
         setEstablishmentName('');
@@ -25,9 +50,7 @@ function SubmissionPage() {
         setCity('');
         setState('');
         setZip('');
-        setLocation(null);
         setDiscount('');
-        setReview('');
     };
 
     // Function to handle map click
@@ -40,7 +63,15 @@ function SubmissionPage() {
             <div className="map-container">
                 <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} onClick={handleMapClick}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-                    {location && <Marker position={location}><Popup>Selected Location</Popup></Marker>}
+                    {location && (
+                        <Marker position={location}>
+                            <Popup>
+                                <strong>{establishmentName}</strong>
+                                <br />
+                                {discount}
+                            </Popup>
+                        </Marker>
+    )}
                 </MapContainer>
             </div>
             <div className="form-fields-container">
