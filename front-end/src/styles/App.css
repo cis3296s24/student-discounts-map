@@ -45,3 +45,62 @@
   margin-left: 2rem;
   margin-top: 5rem;
 }
+
+.submission-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px; /* Adjust width as needed */
+  margin: auto;
+  padding: 20px;
+}
+
+.map-container {
+  flex-basis: 50%; /* Adjust size as needed */
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-right: 20px; /* Adjust spacing between map and form as needed */
+}
+
+.form-fields-container {
+  flex-basis: 45%; /* Adjust size as needed */
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-container {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Rest of the styles */
+
+/* Address field flexbox */
+.address-fields {
+  display: flex;
+  gap: 10px; /* Adjust spacing between fields as needed */
+}
+
+/* Input field styling */
+.form-control {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  background-color: #b30018;
+}

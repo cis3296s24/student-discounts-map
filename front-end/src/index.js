@@ -10,14 +10,23 @@ import {
 import App from "./App";
 import "bootstrap/dist/js/bootstrap";
 import Layout from "./components/Layout";
+<<<<<<< HEAD
 import Home from "./components/Home";
 import Map from "./components/Map";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+=======
+import Home from './components/Home';
+import Map from './components/Map';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Submit from './components/Submit'
+>>>>>>> main
 import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
 
 const router = (
+<<<<<<< HEAD
   <BrowserRouter>
     <Layout>
       <Routes>
@@ -34,6 +43,24 @@ const router = (
       </Routes>
     </Layout>
   </BrowserRouter>
+=======
+    <BrowserRouter>
+        <Layout>
+            <Routes>
+                <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+                    <Route index element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/map" element={<Map />} />
+                    <Route path="/login" element={<Login />}/>
+                    <Route path="/signup" element={<Signup />}/>
+                    <Route path="/submit" element={<Submit />}/>
+                    {/* Catch-all route for unmatched routes */}
+                    <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for unmatched routes */}
+                </Route>
+            </Routes>
+        </Layout>
+    </BrowserRouter>
+>>>>>>> main
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
