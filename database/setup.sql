@@ -17,13 +17,18 @@ CREATE TABLE Login (
 
 CREATE TABLE Submissions (
     SubmissionID INT PRIMARY KEY AUTO_INCREMENT,
-    Title VARCHAR(100) NOT NULL,
-    Description TEXT NOT NULL,
-    Location VARCHAR(1000) NOT NULL, -- GPS location
+    EstablishmentName VARCHAR(100) NOT NULL,
+    Address VARCHAR(100) NOT NULL,
+    City VARCHAR(100) NOT NULL,
+    State VARCHAR(2) NOT NULL,
+    Zip VARCHAR(10) NOT NULL,
+    Discount TEXT NOT NULL,
     Type VARCHAR(50) NOT NULL, -- Type of discount (e.g., restaurant, clothing, electronics)
     LastUpdated DATE NOT NULL,
     ValidUntil DATE NOT NULL,
     Rating DECIMAL(3, 1) DEFAULT 0, -- Rating out of 5
+    Lattitude VARCHAR(30) NOT NULL,
+    Longitude VARCHAR(30) NOT NULL,
     SubmitterID INT NOT NULL, -- Foreign key referencing UserID from Login table
     FOREIGN KEY (SubmitterID) REFERENCES Login(UserID)
 );
