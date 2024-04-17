@@ -3,6 +3,7 @@ from flask_cors import CORS
 from passlib.hash import sha256_crypt
 import database
 import authentication
+import discounts
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -37,6 +38,25 @@ def api_authenticate():
 
     return authentication.authenticate(con, username, password)
 
+@app.route('/submit', methods=[ 'POST' ])
+def api_submit():
+    data = request.json
+
+    if data:
+        name = data.get('name')
+        establishmentName = data.get('establishmentName')
+        address = data.get('address')
+        city = data.get('city')
+        state = data.get('state')
+        zip = data.get('zip')
+        location = data.get('location')
+        discount = data.get('discount')
+        review = data.get('review')
+    else:
+        return jsonify({"error": True,
+                        "message": "Invalid JSON payload"}), 400
+
+    return discounts.submit(con, name, establishmentName, address, city, state, zip, location, discount, review)
 
 if __name__ == '__main__':
     print("Server is starting...")
