@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import {wait} from "@testing-library/user-event/dist/utils";
 
 
 function SubmissionPage() {
     // State variables to store form data
-    const [name, setName] = useState('');
     const [establishmentName, setEstablishmentName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
-    const [location, setLocation] = useState(null);
     const [discount, setDiscount] = useState('');
-    const [review, setReview] = useState('');
+    const [submitterID, setSubmitterID] = useState('');
+    const [lat, setLat] = useState(0);
+    const [lng, setLng] = useState(0);
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
@@ -23,8 +24,10 @@ function SubmissionPage() {
             const response = await fetch(apiUrl);
             const data = await response.json();
             if (data.results && data.results.length > 0) {
-                const { lat, lng } = data.results[0].geometry;
-                setLocation({ lat, lng }); // Set the map location to the geocoded coordinates
+                const { tempLat, tempLng } = data.results[0].geometry;
+                setLat(tempLat);
+                setLng(tempLng);
+                console.log(lat, lng)
             } else {
                 alert('Unable to geocode address.');
                 // Handle no results or invalid data
@@ -36,15 +39,59 @@ function SubmissionPage() {
     };
 
     // Function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ establishmentName, name, address, city, state, zip, location, discount, review });
+        console.log({ establishmentName, address, city, state, zip, discount, submitterID, lat, lng });
 
         // Perform the geocoding and update the map
-        geocodeAddress();
+        geocodeAddress().then(() => {
+            console.log("Geocoding complete.")
+        });
+
+        // Check if the lat and lng are set
+        if (lat === 0 || lng === 0) {
+            alert('Please enter a valid address.');
+            return;
+        }
+
+        // Build the request payload
+        const payload = {
+            establishmentName,
+            address,
+            city,
+            state,
+            zip,
+            discount,
+            submitterID,
+            lat,
+            lng
+        };
+
+        // Send the form data to the server
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        };
+        const backendUrl = 'http://localhost:5000';
+        const submissionUrl = `${backendUrl}/submit`;
+        try {
+            const response = await fetch(submissionUrl, requestOptions);
+            const data = await response.json();
+            if (response.ok) {
+                alert('Submission successful!');
+            } else {
+                alert('Submission failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Submission error:', error);
+            alert('Error submitting form. Please try again.');
+        }
 
         // Clear the form fields after submission
-        setName('');
         setEstablishmentName('');
         setAddress('');
         setCity('');
