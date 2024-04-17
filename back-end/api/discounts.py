@@ -1,12 +1,12 @@
 from flask import jsonify
 
 
-def submit(con, name, establishment_name, address, city, state, zip, location, discount, review):
+def submit(con, establishment_name, address, city, state, zip, discount, submitterID, lat, lng):
     cur = con.cursor()
 
-    query = "INSERT INTO Discounts (name, establishment_name, address, city, state, zip, location, discount, review) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    query = "INSERT INTO Discounts (establishmentName, address, city, state, zip, discount, submitterID, lat, lng) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-    cur.execute(query, (name, establishment_name, address, city, state, zip, location, discount, review))
+    cur.execute(query, (establishment_name, address, city, state, zip, discount, submitterID, lat, lng))
 
     con.commit()
 
