@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Map from './components/Map';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Submit from './components/Submit'
 import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from './reportWebVitals';
 
@@ -21,6 +22,7 @@ const router = (
                     <Route path="/map" element={<Map />} />
                     <Route path="/login" element={<Login />}/>
                     <Route path="/signup" element={<Signup />}/>
+                    <Route path="/submit" element={<Submit />}/>
                     {/* Catch-all route for unmatched routes */}
                     <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for unmatched routes */}
                 </Route>
