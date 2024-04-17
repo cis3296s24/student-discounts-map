@@ -14,10 +14,6 @@ import Home from "./components/Home";
 import Map from "./components/Map";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Home from './components/Home';
-import Map from './components/Map';
-import Login from './components/Login';
-import Signup from './components/Signup';
 import Submit from './components/Submit'
 import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
