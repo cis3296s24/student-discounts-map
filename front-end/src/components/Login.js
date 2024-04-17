@@ -7,7 +7,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { setJwtToken } = useOutletContext()
-    const { setIsAdmin } = useOutletContext()
+    const { setUserID } = useOutletContext()
     const { setAlertClassName } = useOutletContext()
     const { setAlertMessage } = useOutletContext()
 
@@ -44,6 +44,7 @@ const Login = () => {
                     setAlertMessage(data.message);
                 } else {
                     setJwtToken(data.access_token);
+                    setUserID(data.user_id);
                     setAlertClassName("d-none");
                     setAlertMessage("");
                     navigate("/");

@@ -17,6 +17,13 @@ import Signup from "./components/Signup";
 import Submit from './components/Submit'
 import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
+import Cookies from "js-cookie";
+
+const isAuthenticated = () => {
+    const accessToken = Cookies.get('access_token');
+    console.log("access token: ", accessToken);
+    return !!accessToken; // Return true if access token exists, otherwise false
+};
 
 const router = (
     <BrowserRouter>
