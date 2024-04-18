@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
+import L from 'leaflet';
+import iconUrl from './images/marker-icon.png';
 
 function SubmissionPage() {
     // State variables to store form data
@@ -14,6 +15,13 @@ function SubmissionPage() {
     const [location, setLocation] = useState(null); 
     const [discount, setDiscount] = useState('');
     const [DisplayData, setDisplayData] = useState('');
+
+    const customIcon = new L.Icon({
+        iconUrl: iconUrl, // Adjust this path if the image is in the public directory
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+    });
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
@@ -70,7 +78,7 @@ function SubmissionPage() {
                 <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} onClick={handleMapClick}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {location && (
-                        <Marker position={location} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
+                        <Marker position={location} icon={customIcon} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
                         <Popup>
                             <strong>{DisplayData.establishmentName}</strong>
                             <br />
