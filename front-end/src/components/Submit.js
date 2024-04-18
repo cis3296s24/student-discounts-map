@@ -11,37 +11,43 @@ function SubmissionPage() {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState(null); 
     const [discount, setDiscount] = useState('');
-    const [review, setReview] = useState('');
+    const [DisplayData, setDisplayData] = useState('');
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
-    
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            if (data.results && data.results.length > 0) {
-                const { lat, lng } = data.results[0].geometry;
-                setLocation({ lat, lng }); // Set the map location to the geocoded coordinates
-            } else {
-                alert('Unable to geocode address.');
-                // Handle no results or invalid data
-            }
-        } catch (error) {
-            console.error('Geocoding error:', error);
-            alert('Error geocoding address. Please try again.');
-        }
+        
+        console.log("Rendering Marker with:", establishmentName, discount);
+
+        return fetch(apiUrl) // Return the fetch promise
+            .then(response => response.json())
+            .then(data => {
+                if (data.results && data.results.length > 0) {
+                    const { lat, lng } = data.results[0].geometry;
+                    setLocation({ lat, lng }); // Update location state
+                } else {
+                    alert('Unable to geocode address.');
+                }
+            }).catch(error => {
+                console.error('Geocoding error:', error);
+                alert('Error geocoding address. Please try again.');
+            });
     };
 
     // Function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ establishmentName, name, address, city, state, zip, location, discount, review });
+        console.log({ establishmentName, name, address, city, state, zip, location, discount});
 
         // Perform the geocoding and update the map
-        geocodeAddress();
+        await geocodeAddress();
+        
+        setDisplayData({
+            establishmentName,
+            discount
+        });    
 
         // Clear the form fields after submission
         setName('');
@@ -64,14 +70,14 @@ function SubmissionPage() {
                 <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} onClick={handleMapClick}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {location && (
-                        <Marker position={location}>
-                            <Popup>
-                                <strong>{establishmentName}</strong>
-                                <br />
-                                {discount}
-                            </Popup>
-                        </Marker>
-    )}
+                        <Marker position={location} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
+                        <Popup>
+                            <strong>{DisplayData.establishmentName}</strong>
+                            <br />
+                            {DisplayData.discount}
+                        </Popup>
+                     </Marker>
+                    )}
                 </MapContainer>
             </div>
             <div className="form-fields-container">
