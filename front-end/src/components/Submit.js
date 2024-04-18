@@ -68,14 +68,12 @@ function SubmissionPage() {
     };
 
     // Function to handle map click
-    const handleMapClick = (e) => {
-        setLocation(e.latlng); // Set the location when the map is clicked
-    }
+
 
     return (
         <div className="submission-container mt-7">
             <div className="map-container">
-                <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} onClick={handleMapClick}>
+                <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {location && (
                         <Marker position={location} icon={customIcon} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
