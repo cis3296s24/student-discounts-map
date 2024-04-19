@@ -41,7 +41,7 @@ function SubmissionPage() {
             .then(response => response.json())
             .then(data => {
                 if (data.results && data.results.length > 0) {
-                    const { lat, lng } = data.results[0].geometry;
+                    const { tempLat, tempLng } = data.results[0].geometry;
                     setLat(tempLat);
                     setLng(tempLng);
                     setLocation({ lat, lng }); // Update location state
