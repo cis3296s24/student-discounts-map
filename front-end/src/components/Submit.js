@@ -1,50 +1,126 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import {wait} from "@testing-library/user-event/dist/utils";
+import {useOutletContext} from "react-router-dom";
 
+import L from 'leaflet';
+import iconUrl from './images/marker-icon.png';
 
 function SubmissionPage() {
     // State variables to store form data
-    const [name, setName] = useState('');
     const [establishmentName, setEstablishmentName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState(null); 
     const [discount, setDiscount] = useState('');
-    const [review, setReview] = useState('');
+    const [submitterID, setSubmitterID] = useState('');
+    const [lat, setLat] = useState(0);
+    const [lng, setLng] = useState(0);
+
+    const { userID } = useOutletContext();
+    const { jwtToken } = useOutletContext();
+    const [DisplayData, setDisplayData] = useState('');
+
+    const customIcon = new L.Icon({
+        iconUrl: iconUrl, // Adjust this path if the image is in the public directory
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+    });
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
-    
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            if (data.results && data.results.length > 0) {
-                const { lat, lng } = data.results[0].geometry;
-                setLocation({ lat, lng }); // Set the map location to the geocoded coordinates
-            } else {
-                alert('Unable to geocode address.');
-                // Handle no results or invalid data
-            }
-        } catch (error) {
-            console.error('Geocoding error:', error);
-            alert('Error geocoding address. Please try again.');
-        }
+        
+        console.log("Rendering Marker with:", establishmentName, discount);
+
+        return fetch(apiUrl) // Return the fetch promise
+            .then(response => response.json())
+            .then(data => {
+                if (data.results && data.results.length > 0) {
+                    const { tempLat, tempLng } = data.results[0].geometry;
+                    setLat(tempLat);
+                    setLng(tempLng);
+                    setLocation({ lat, lng }); // Update location state
+                    console.log(lat, lng)
+                } else {
+                    alert('Unable to geocode address.');
+                }
+            }).catch(error => {
+                console.error('Geocoding error:', error);
+                alert('Error geocoding address. Please try again.');
+            });
     };
 
     // Function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ establishmentName, name, address, city, state, zip, location, discount, review });
+        console.log({ establishmentName, address, city, state, zip, location, discount, submitterID });
 
         // Perform the geocoding and update the map
-        geocodeAddress();
+        geocodeAddress().then(() => {
+            console.log("Geocoding complete.")
+        });
+
+        // Check if the lat and lng are set
+        if (lat === 0 || lng === 0) {
+            alert('Please enter a valid address.');
+            return;
+        }
+
+        // Check if the user is logged in
+        if (jwtToken === '') {
+            alert('Please log in to submit a review.');
+            return;
+        }
+        setSubmitterID(userID)
+
+        // Build the request payload
+        const payload = {
+            establishmentName,
+            address,
+            city,
+            state,
+            zip,
+            discount,
+            submitterID,
+            lat,
+            lng
+        };
+
+        // Send the form data to the server
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        };
+        const backendUrl = 'http://localhost:5000';
+        const submissionUrl = `${backendUrl}/submit`;
+        try {
+            const response = await fetch(submissionUrl, requestOptions);
+            const data = await response.json();
+            if (response.ok) {
+                alert('Submission successful!');
+            } else {
+                alert('Submission failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Submission error:', error);
+            alert('Error submitting form. Please try again.');
+        }
+
+        setDisplayData({
+            establishmentName,
+            discount
+        });    
 
         // Clear the form fields after submission
-        setName('');
         setEstablishmentName('');
         setAddress('');
         setCity('');
@@ -54,24 +130,22 @@ function SubmissionPage() {
     };
 
     // Function to handle map click
-    const handleMapClick = (e) => {
-        setLocation(e.latlng); // Set the location when the map is clicked
-    }
+
 
     return (
         <div className="submission-container mt-7">
             <div className="map-container">
-                <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} onClick={handleMapClick}>
+                <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {location && (
-                        <Marker position={location}>
-                            <Popup>
-                                <strong>{establishmentName}</strong>
-                                <br />
-                                {discount}
-                            </Popup>
-                        </Marker>
-    )}
+                        <Marker position={location} icon={customIcon} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
+                        <Popup>
+                            <strong>{DisplayData.establishmentName}</strong>
+                            <br />
+                            {DisplayData.discount}
+                        </Popup>
+                     </Marker>
+                    )}
                 </MapContainer>
             </div>
             <div className="form-fields-container">

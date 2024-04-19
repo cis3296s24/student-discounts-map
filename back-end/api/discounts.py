@@ -1,12 +1,22 @@
+import datetime
+
 from flask import jsonify
 
 
-def submit(con, name, establishment_name, address, city, state, zip, location, discount, review):
+def submit(con, establishment_name, address, city, state, zip, discount, submitterID, lat, lng):
     cur = con.cursor()
 
-    query = "INSERT INTO Discounts (name, establishment_name, address, city, state, zip, location, discount, review) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    lastUpdated = datetime.datetime.now()
 
-    cur.execute(query, (name, establishment_name, address, city, state, zip, location, discount, review))
+    ## PLACE HOLDER VALUES
+    type = "restaurant"
+    validUntil = "2025-12-31"
+    rating = 5
+
+    query = ("INSERT INTO submissions (establishmentName, address, city, state, zip, discount, type, lastUpdated, validUntil, rating, lattitude, longitude, submitterID) "
+             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+
+    cur.execute(query, (establishment_name, address, city, state, zip, discount, type, lastUpdated, validUntil, rating, lat, lng, submitterID))
 
     con.commit()
 

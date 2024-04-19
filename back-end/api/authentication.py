@@ -39,7 +39,8 @@ def authenticate(connection, username, password):
     accessToken = generateAccessToken(result[ 0 ], result[ 4 ])
     response = jsonify({'success': True,
                         'message': 'Authentication successful',
-                        'access_token': accessToken})
+                        'access_token': accessToken,
+                        'user_id': result[ 0 ],})
 
     response.set_cookie('access_token', accessToken)
     return response, 200
