@@ -8,6 +8,7 @@ import Alert from "./components/Alert";
 function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userID, setUserID] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [alertClassName, setAlertClassName] = useState("d-none");
 
@@ -55,8 +56,10 @@ function App() {
         <Outlet context={{
           jwtToken: jwtToken,
           setJwtToken: setJwtToken,
+            setUserID: setUserID,
           setAlertMessage: setAlertMessage,
           setAlertClassName: setAlertClassName,
+            userID: userID,
         }}/>
       </div>
   );

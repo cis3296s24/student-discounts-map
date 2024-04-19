@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import {wait} from "@testing-library/user-event/dist/utils";
+import {useOutletContext} from "react-router-dom";
+
 import L from 'leaflet';
 import iconUrl from './images/marker-icon.png';
 
 function SubmissionPage() {
     // State variables to store form data
-    const [name, setName] = useState('');
     const [establishmentName, setEstablishmentName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -14,6 +16,12 @@ function SubmissionPage() {
     const [zip, setZip] = useState('');
     const [location, setLocation] = useState(null); 
     const [discount, setDiscount] = useState('');
+    const [submitterID, setSubmitterID] = useState('');
+    const [lat, setLat] = useState(0);
+    const [lng, setLng] = useState(0);
+
+    const { userID } = useOutletContext();
+    const { jwtToken } = useOutletContext();
     const [DisplayData, setDisplayData] = useState('');
 
     const customIcon = new L.Icon({
@@ -33,8 +41,11 @@ function SubmissionPage() {
             .then(response => response.json())
             .then(data => {
                 if (data.results && data.results.length > 0) {
-                    const { lat, lng } = data.results[0].geometry;
+                    const { tempLat, tempLng } = data.results[0].geometry;
+                    setLat(tempLat);
+                    setLng(tempLng);
                     setLocation({ lat, lng }); // Update location state
+                    console.log(lat, lng)
                 } else {
                     alert('Unable to geocode address.');
                 }
@@ -47,18 +58,69 @@ function SubmissionPage() {
     // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ establishmentName, name, address, city, state, zip, location, discount});
+        console.log({ establishmentName, address, city, state, zip, location, discount, submitterID });
 
         // Perform the geocoding and update the map
-        await geocodeAddress();
-        
+        geocodeAddress().then(() => {
+            console.log("Geocoding complete.")
+        });
+
+        // Check if the lat and lng are set
+        if (lat === 0 || lng === 0) {
+            alert('Please enter a valid address.');
+            return;
+        }
+
+        // Check if the user is logged in
+        if (jwtToken === '') {
+            alert('Please log in to submit a review.');
+            return;
+        }
+        setSubmitterID(userID)
+
+        // Build the request payload
+        const payload = {
+            establishmentName,
+            address,
+            city,
+            state,
+            zip,
+            discount,
+            submitterID,
+            lat,
+            lng
+        };
+
+        // Send the form data to the server
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        };
+        const backendUrl = 'http://localhost:5000';
+        const submissionUrl = `${backendUrl}/submit`;
+        try {
+            const response = await fetch(submissionUrl, requestOptions);
+            const data = await response.json();
+            if (response.ok) {
+                alert('Submission successful!');
+            } else {
+                alert('Submission failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Submission error:', error);
+            alert('Error submitting form. Please try again.');
+        }
+
         setDisplayData({
             establishmentName,
             discount
         });    
 
         // Clear the form fields after submission
-        setName('');
         setEstablishmentName('');
         setAddress('');
         setCity('');

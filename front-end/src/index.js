@@ -1,16 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Routes, Route, Outlet, Navigate} from 'react-router-dom';
-import App from './App';
-import 'bootstrap/dist/js/bootstrap';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import App from "./App";
+import "bootstrap/dist/js/bootstrap";
 import Layout from "./components/Layout";
-import Home from './components/Home';
-import Map from './components/Map';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Home from "./components/Home";
+import Map from "./components/Map";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Submit from './components/Submit'
 import ErrorPage from "./components/ErrorPage";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
+import Cookies from "js-cookie";
+
+const isAuthenticated = () => {
+    const accessToken = Cookies.get('access_token');
+    console.log("access token: ", accessToken);
+    return !!accessToken; // Return true if access token exists, otherwise false
+};
 
 const router = (
     <BrowserRouter>
@@ -31,12 +44,8 @@ const router = (
     </BrowserRouter>
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-        {router}
-    </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<React.StrictMode>{router}</React.StrictMode>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
