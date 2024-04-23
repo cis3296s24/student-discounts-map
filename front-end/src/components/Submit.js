@@ -42,13 +42,18 @@ function SubmissionPage() {
             .then(data => {
                 if (data.results && data.results.length > 0) {
                     const { lat, lng } = data.results[0].geometry;
+                    console.log("Geocoding results:", lat, lng);
                     setLocation({ lat, lng }); // Update location state
+                    console.log("Location:", location);
+                    return { lat, lng};
                 } else {
                     alert('Unable to geocode address.');
+                    return null;
                 }
             }).catch(error => {
                 console.error('Geocoding error:', error);
                 alert('Error geocoding address. Please try again.');
+                return null;
             });
     };
 
@@ -61,6 +66,9 @@ function SubmissionPage() {
         geocodeAddress().then(() => {
             console.log("Geocoding complete.")
         });
+
+        // wait 5 seconds
+        await new Promise(r => setTimeout(r, 5000));
 
         // Check if the user is logged in
         if (jwtToken === '') {
@@ -78,8 +86,8 @@ function SubmissionPage() {
             zip,
             discount,
             submitterID,
-            lat,
-            lng
+            lat : location.lat,
+            lng : location.lng
         };
 
         // Send the form data to the server
