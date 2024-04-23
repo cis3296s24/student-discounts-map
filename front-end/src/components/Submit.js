@@ -34,25 +34,23 @@ function SubmissionPage() {
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
-        
+
         console.log("Rendering Marker with:", establishmentName, discount);
 
-        return fetch(apiUrl) // Return the fetch promise
-            .then(response => response.json())
-            .then(data => {
-                if (data.results && data.results.length > 0) {
-                    const { tempLat, tempLng } = data.results[0].geometry;
-                    setLat(tempLat);
-                    setLng(tempLng);
-                    setLocation({ lat, lng }); // Update location state
-                    console.log(lat, lng)
-                } else {
-                    alert('Unable to geocode address.');
-                }
-            }).catch(error => {
-                console.error('Geocoding error:', error);
-                alert('Error geocoding address. Please try again.');
-            });
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            if (data.results && data.results.length > 0) {
+                const { lat: tempLat, lng: tempLng } = data.results[0].geometry;
+                setLocation({ lat: tempLat, lng: tempLng }); // Update location state directly with the new values
+                console.log(tempLat, tempLng);
+            } else {
+                alert('Unable to geocode address.');
+            }
+        } catch (error) {
+            console.error('Geocoding error:', error);
+            alert('Error geocoding address. Please try again.');
+        }
     };
 
     // Function to handle form submission
