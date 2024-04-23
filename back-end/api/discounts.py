@@ -24,3 +24,17 @@ def submit(con, establishment_name, address, city, state, zip, discount, submitt
 
     return jsonify({"error": False,
                     "message": "Review submitted successfully"}), 200
+
+
+def retrieve(con, lat, lng):
+    cur = con.cursor()
+
+    query = ("SELECT * FROM submissions WHERE lattitude = %s AND longitude = %s")
+
+    cur.execute(query, (lat, lng))
+
+    result = cur.fetchall()
+
+    cur.close()
+
+    return jsonify(result), 200
