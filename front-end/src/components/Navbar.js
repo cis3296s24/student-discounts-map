@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg fixed-top" data-bs-theme={"dark"}>
             <div className="container-fluid">
                 <Link to={"/"} className={"navbar-brand"}>
-                    Title
+                    Student Discounts Map
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
