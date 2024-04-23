@@ -58,6 +58,24 @@ def api_submit():
 
     return discounts.submit(con, establishmentName, address, city, state, zip, discount, submitterID, lat, lng)
 
+@app.route('/retrieve', methods=[ 'POST' ])
+def api_retrieve():
+    data = request.json
+
+    if data:
+        lat = data.get('lat')
+        lng = data.get('lng')
+    else:
+        return jsonify({"error": True,
+                        "message": "Invalid JSON payload"}), 400
+
+    return discounts.retrieve(con, lat, lng)
+
+@app.route('/retrieve-all', methods=[ 'GET' ])
+def api_retrieveAll():
+    return discounts.retrieveAll(con)
+
+
 if __name__ == '__main__':
     print("Server is starting...")
     print("Connecting to database...")
