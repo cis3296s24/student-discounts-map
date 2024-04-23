@@ -16,7 +16,7 @@ function SubmissionPage() {
     const [zip, setZip] = useState('');
     const [location, setLocation] = useState(null); 
     const [discount, setDiscount] = useState('');
-    const [submitterID, setSubmitterID] = useState('');
+    const [submitterID, setSubmitterID] = useState(1);
     const [lat, setLat] = useState(0);
     const [lng, setLng] = useState(0);
 
@@ -34,24 +34,26 @@ function SubmissionPage() {
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
-        
-        console.log("Rendering Marker with:", establishmentName, discount);
 
+        console.log("Rendering Marker with:", establishmentName, discount);
+        
         return fetch(apiUrl) // Return the fetch promise
             .then(response => response.json())
             .then(data => {
                 if (data.results && data.results.length > 0) {
-                    const { tempLat, tempLng } = data.results[0].geometry;
-                    setLat(tempLat);
-                    setLng(tempLng);
+                    const { lat, lng } = data.results[0].geometry;
+                    console.log("Geocoding results:", lat, lng);
                     setLocation({ lat, lng }); // Update location state
-                    console.log(lat, lng)
+                    console.log("Location:", location);
+                    return { lat, lng};
                 } else {
                     alert('Unable to geocode address.');
+                    return null;
                 }
             }).catch(error => {
                 console.error('Geocoding error:', error);
                 alert('Error geocoding address. Please try again.');
+                return null;
             });
     };
 
@@ -65,11 +67,8 @@ function SubmissionPage() {
             console.log("Geocoding complete.")
         });
 
-        // Check if the lat and lng are set
-        if (lat === 0 || lng === 0) {
-            alert('Please enter a valid address.');
-            return;
-        }
+        // wait 5 seconds
+        await new Promise(r => setTimeout(r, 5000));
 
         // Check if the user is logged in
         if (jwtToken === '') {
@@ -87,8 +86,8 @@ function SubmissionPage() {
             zip,
             discount,
             submitterID,
-            lat,
-            lng
+            lat : location.lat,
+            lng : location.lng
         };
 
         // Send the form data to the server
