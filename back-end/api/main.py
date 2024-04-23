@@ -71,6 +71,10 @@ def api_retrieve():
 
     return discounts.retrieve(con, lat, lng)
 
+@app.route('/retrieve-all', methods=[ 'GET' ])
+def api_retrieveAll():
+    return discounts.retrieveAll(con)
+
 
 if __name__ == '__main__':
     print("Server is starting...")

@@ -38,3 +38,16 @@ def retrieve(con, lat, lng):
     cur.close()
 
     return jsonify(result), 200
+
+def retrieveAll(con):
+    cur = con.cursor()
+
+    query = ("SELECT * FROM submissions")
+
+    cur.execute(query)
+
+    result = cur.fetchall()
+
+    cur.close()
+
+    return jsonify(result), 200
