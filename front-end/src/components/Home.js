@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 /**
  * Home component for the home page.
@@ -34,14 +35,41 @@ const Home = () => {
         }
     }
 
-    return(
-        <div className="text-center">
-            <h2>Home</h2>
-            <br/>
-            <br/>
-            <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-75.36861419677734%2C39.85730997290123%2C-74.96006011962892%2C40.04575171819509&amp;layer=mapnik&amp;marker=39.95159574030591%2C-75.16433715820312"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=39.9516&amp;mlon=-75.1643#map=12/39.9516/-75.1643">View Larger Map</a></small>
+    return (
+        <div className="container mt-7">
+            <div className="row">
+                <div className="col-md-8 offset-md-2 text-center">
+                    <h2>Welcome to the Student Discounts Map Website</h2>
+                    <p className="lead">
+                        This website is designed to help students find discounts in their area.<br/>
+                        If you are a student, you can use this website to find discounts near you,<br/>
+                        OR you can add discounts to the map for other students to find.<br/>
+                        Help us build a community of students who can save money!<br/>
+                        <br/>
+                        Happy discount hunting!
+                    </p>
+                </div>
+            </div>
+            <div className="row mt-5">
+                <h3>Get started</h3>
+                <div>
+                    Create an account or log in to start finding discounts!
+                    <br/>
+                    <Link to={"/login"}>
+                        <button type="button" className="btn btn-primary">
+                            Login <span className="badge text-bg-warning">Existing users</span>
+                        </button>
+                    </Link>
+                    <br/>
+                    <Link to={"/signup"}>
+                        <button type="button" className="btn btn-primary">
+                            Sign Up <span className="badge text-bg-info">New users</span>
+                        </button>
+                    </Link>
+                </div>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Home;
