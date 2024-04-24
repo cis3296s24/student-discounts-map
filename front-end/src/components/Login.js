@@ -1,6 +1,11 @@
 import {useState} from "react";
 import {useNavigate, useOutletContext} from "react-router-dom";
 
+/**
+ * Login component for user authentication.
+ *
+ * @component
+ */
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -11,11 +16,17 @@ const Login = () => {
     const { setAlertClassName } = useOutletContext()
     const { setAlertMessage } = useOutletContext()
 
-    //develop backend logic here
+    /**
+     * Handles the form submission for user login.
+     *
+     * @async
+     * @param {Event} e - The form submission event.
+     * @returns {Promise<void>}
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        /**DEBUG: REMOVE IN RELEASE**/
+        // DEBUG: REMOVE IN RELEASE
         console.log("Login Attempt:", username, password);
 
         let payload = {
