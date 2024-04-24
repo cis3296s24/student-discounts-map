@@ -1,5 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
+/**
+ * Error page component for displaying error messages.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ErrorPage() {
     return (
         <div className="container">

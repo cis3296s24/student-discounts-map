@@ -7,6 +7,12 @@ import {useOutletContext} from "react-router-dom";
 import L from 'leaflet';
 import iconUrl from './images/marker-icon.png';
 
+/**
+ * SubmissionPage function component for submitting establishment data.
+ *
+ * @component
+ * @returns {JSX.Element} Submission form JSX.
+ */
 function SubmissionPage() {
     // State variables to store form data
     const [establishmentName, setEstablishmentName] = useState('');
@@ -31,6 +37,12 @@ function SubmissionPage() {
         popupAnchor: [1, -34]
     });
 
+    /**
+     * Geocodes the address using OpenCage API and updates the location state.
+     *
+     * @async
+     * @returns {Promise<{ lat: number, lng: number } | null>} Coordinates or null if geocoding fails.
+     */
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
@@ -57,7 +69,12 @@ function SubmissionPage() {
             });
     };
 
-    // Function to handle form submission
+    /**
+     * Handles form submission.
+     *
+     * @async
+     * @param {Event} e - Form submission event.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log({ establishmentName, address, city, state, zip, location, discount, submitterID });

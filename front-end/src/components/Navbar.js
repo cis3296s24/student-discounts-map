@@ -1,6 +1,12 @@
 import {Link} from "react-router-dom";
 import "../styles/Navbar.css";
 
+/**
+ * Navbar component for the main page layout.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg fixed-top" data-bs-theme={"dark"}>

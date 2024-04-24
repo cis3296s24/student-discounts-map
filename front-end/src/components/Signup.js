@@ -5,6 +5,7 @@ import {useNavigate, useOutletContext} from 'react-router-dom';
  * Signup component for user registration.
  *
  * @component
+ * @returns {JSX.Element} Signup component.
  */
 const Signup = () => {
     const [formData, setFormData] = useState({

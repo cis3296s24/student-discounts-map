@@ -5,6 +5,7 @@ import {useNavigate, useOutletContext} from "react-router-dom";
  * Login component for user authentication.
  *
  * @component
+ * @returns {JSX.Element} Login component.
  */
 const Login = () => {
     const [username, setUsername] = useState("");
