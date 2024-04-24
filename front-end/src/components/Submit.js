@@ -7,12 +7,6 @@ import {useOutletContext} from "react-router-dom";
 import L from 'leaflet';
 import iconUrl from './images/marker-icon.png';
 
-/**
- * SubmissionPage function component for submitting establishment data.
- *
- * @component
- * @returns {JSX.Element} Submission form JSX.
- */
 function SubmissionPage() {
     // State variables to store form data
     const [establishmentName, setEstablishmentName] = useState('');
@@ -37,12 +31,6 @@ function SubmissionPage() {
         popupAnchor: [1, -34]
     });
 
-    /**
-     * Geocodes the address using OpenCage API and updates the location state.
-     *
-     * @async
-     * @returns {Promise<{ lat: number, lng: number } | null>} Coordinates or null if geocoding fails.
-     */
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
@@ -54,10 +42,8 @@ function SubmissionPage() {
             .then(data => {
                 if (data.results && data.results.length > 0) {
                     const { lat, lng } = data.results[0].geometry;
-                    console.log("Geocoding results:", lat, lng);
                     setLocation({ lat, lng }); // Update location state
-                    console.log("Location:", location);
-                    return { lat, lng};
+                    return { lat, lng };
                 } else {
                     alert('Unable to geocode address.');
                     return null;
@@ -69,12 +55,7 @@ function SubmissionPage() {
             });
     };
 
-    /**
-     * Handles form submission.
-     *
-     * @async
-     * @param {Event} e - Form submission event.
-     */
+    // Function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log({ establishmentName, address, city, state, zip, location, discount, submitterID });
@@ -83,9 +64,6 @@ function SubmissionPage() {
         geocodeAddress().then(() => {
             console.log("Geocoding complete.")
         });
-
-        // wait 5 seconds
-        await new Promise(r => setTimeout(r, 5000));
 
         // Check if the user is logged in
         if (jwtToken === '') {
@@ -102,7 +80,7 @@ function SubmissionPage() {
             state,
             zip,
             discount,
-            submitterID,
+            submitterID : userID,
             lat : location.lat,
             lng : location.lng
         };
