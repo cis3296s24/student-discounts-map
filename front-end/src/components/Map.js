@@ -32,7 +32,12 @@ const MapComponent = () => {
   }, []);
 
   const handleRowClick = (latitude, longitude) => {
-    console.log("Clicked row with latitude:", latitude, "longitude:", longitude);
+    console.log(
+      "Clicked row with latitude:",
+      latitude,
+      "longitude:",
+      longitude
+    );
 
     if (latitude !== undefined && longitude !== undefined && mapRef.current) {
       const map = mapRef.current;
@@ -72,10 +77,10 @@ const MapComponent = () => {
   }, []);
 
   return (
-      <div>
-        <div id="map" style={{ height: "500px" }}></div>
-        <table className="table">
-          <thead>
+    <div>
+      <div id="map" style={{ height: "500px" }}></div>
+      <table className="table">
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Establishment Name</th>
@@ -86,27 +91,27 @@ const MapComponent = () => {
             <th scope="col">Discount</th>
             <th scope="col">Submitter ID</th>
           </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
           {tableData.map((data, index) => (
-              <tr
-                  key={index}
-                  onClick={() => handleRowClick(data[11], data[12])}
-                  style={{ cursor: "pointer" }}
-              >
-                <th scope="row">{data[0]}</th>
-                <td>{data[1]}</td>
-                <td>{data[2]}</td>
-                <td>{data[3]}</td>
-                <td>{data[4]}</td>
-                <td>{data[5]}</td>
-                <td>{data[6]}</td>
-                <td>{data[13]}</td>
-              </tr>
+            <tr
+              key={index}
+              onClick={() => handleRowClick(data[11], data[12])}
+              style={{ cursor: "pointer" }}
+            >
+              <th scope="row">{data[0]}</th>
+              <td>{data[1]}</td>
+              <td>{data[2]}</td>
+              <td>{data[3]}</td>
+              <td>{data[4]}</td>
+              <td>{data[5]}</td>
+              <td>{data[6]}</td>
+              <td>{data[13]}</td>
+            </tr>
           ))}
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
