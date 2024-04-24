@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import {useNavigate, useOutletContext} from 'react-router-dom';
 
 /**
- * Signup component for user registration.
+ * Signup component for handling user registration.
+ * It manages form inputs for user credentials including username, email, password, and password confirmation.
+ * Validates the form data and submits it to a backend server for registration. Provides feedback through alert messages
+ * based on the outcome of the signup process.
  *
- * @component
- * @returns {JSX.Element} Signup component.
+ * @function Signup
+ * @param {function} handleInputChange - Updates the formData state with input values as the user types.
+ *        Ensures that each input is tracked by its 'name' attribute, facilitating dynamic state updates.
+ * @param {function} handleSubmit - Manages the form submission process. It validates the password match,
+ *        constructs the payload, and handles the POST request to the backend server for user registration.
+ *        Based on the server's response, it sets alert messages and navigates the user to the login page upon success.
+ * @returns {JSX.Element} A JSX element representing the signup form with controlled inputs for username, email, password, and password confirmation.
  */
+
 const Signup = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -20,11 +29,7 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    /**
-     * Updates the input field state based on user input.
-     *
-     * @param {Event} e - The input change event.
-     */
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -33,11 +38,7 @@ const Signup = () => {
         });
     };
 
-    /**
-     * Handles the form submission for user signup.
-     *
-     * @param {Event} e - The form submission event.
-     */
+
     const handleSubmit = (e) => {
         e.preventDefault();
 

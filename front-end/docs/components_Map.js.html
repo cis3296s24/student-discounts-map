@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Alert">Alert</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MapComponent">MapComponent</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#isAuthenticated">isAuthenticated</a></li><li><a href="global.html#reportWebVitals">reportWebVitals</a></li><li><a href="global.html#router">router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Alert">Alert</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MapComponent">MapComponent</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#SubmissionPage">SubmissionPage</a></li><li><a href="global.html#isAuthenticated">isAuthenticated</a></li><li><a href="global.html#reportWebVitals">reportWebVitals</a></li><li><a href="global.html#router">router</a></li></ul>
     
 </nav>
 
@@ -48,13 +48,22 @@
             <pre class="prettyprint source linenums"><code>import React, { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-
 /**
- * Map component for displaying a map with a table of data.
+ * MapComponent is a functional component that integrates an interactive map using Leaflet.
+ * It initializes and displays a map, allowing users to add markers with a click. The component also
+ * handles fetching and displaying data in a tabular format, where clicking on a row centers the map on
+ * the corresponding location.
  *
- * @component
- * @returns {Element}
+ * @function MapComponent
+ * @param {function} handleRowClick - Handles the logic when a row in the table data is clicked. It centers
+ *        the map to the coordinates of the clicked row. Expects latitude and longitude as arguments.
+ * @param {function} addMarker - Adds a marker to the map at the location where the user clicks.
+ * @param {Object[]} tableData - The state variable that holds the data fetched from the backend to populate
+ *        the table list.
+ * @param {Object} mapRef - A useRef hook to keep a mutable reference to the map instance for dynamic updates.
+ * @returns {JSX.Element} A JSX element representing the map and the data table list.
  */
+
 const MapComponent = () => {
   const [tableData, setTableData] = useState([]);
   const mapRef = useRef(null);
@@ -125,41 +134,26 @@ const MapComponent = () => {
   }, []);
 
   return (
-      &lt;div>
-        &lt;div id="map" style={{ height: "500px" }}>&lt;/div>
-        &lt;table className="table">
-          &lt;thead>
-          &lt;tr>
-            &lt;th scope="col">#&lt;/th>
-            &lt;th scope="col">Establishment Name&lt;/th>
-            &lt;th scope="col">Address&lt;/th>
-            &lt;th scope="col">City&lt;/th>
-            &lt;th scope="col">State&lt;/th>
-            &lt;th scope="col">Zip&lt;/th>
-            &lt;th scope="col">Discount&lt;/th>
-            &lt;th scope="col">Submitter ID&lt;/th>
-          &lt;/tr>
-          &lt;/thead>
-          &lt;tbody>
-          {tableData.map((data, index) => (
-              &lt;tr
-                  key={index}
-                  onClick={() => handleRowClick(data[11], data[12])}
-                  style={{ cursor: "pointer" }}
-              >
-                &lt;th scope="row">{data[0]}&lt;/th>
-                &lt;td>{data[1]}&lt;/td>
-                &lt;td>{data[2]}&lt;/td>
-                &lt;td>{data[3]}&lt;/td>
-                &lt;td>{data[4]}&lt;/td>
-                &lt;td>{data[5]}&lt;/td>
-                &lt;td>{data[6]}&lt;/td>
-                &lt;td>{data[13]}&lt;/td>
-              &lt;/tr>
-          ))}
-          &lt;/tbody>
-        &lt;/table>
+    &lt;div className="map-page-container">
+      &lt;div className="map-container">
+        &lt;div id="map" className="map">&lt;/div>
       &lt;/div>
+      &lt;div className="submissions-container">
+        &lt;div className="submissions-scrollable">
+          {tableData.map((data, index) => (
+            &lt;div
+              className="submission-box"
+              key={index}
+              onClick={() => handleRowClick(data[11], data[12])}
+            >
+              &lt;div className="establishment-name">{data[1]}&lt;/div>
+              &lt;div className="address">{`${data[2]}, ${data[3]}, ${data[4]}, ${data[5]}`}&lt;/div>
+              &lt;div className="discount-description">{data[6]}&lt;/div>
+            &lt;/div>
+          ))}
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
   );
 };
 
@@ -178,7 +172,7 @@ export default MapComponent;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Apr 23 2024 22:19:29 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed Apr 24 2024 18:26:27 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

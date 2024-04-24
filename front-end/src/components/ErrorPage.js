@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom';
 
 /**
- * Error page component for displaying error messages.
- * @returns {JSX.Element}
- * @constructor
+ * ErrorPage is a functional component that renders an error message to the user.
+ * It acts as a generic error handling page for unmatched routes or other errors within the application.
+ * This component displays a simple "Oops!" header and a message indicating an unexpected error.
+ * It includes an Outlet for rendering additional components or messages passed down through the routing.
+ *
+ * @returns {JSX.Element} A JSX element representing an error page with a standardized message.
  */
 export default function ErrorPage() {
     return (

@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Alert">Alert</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MapComponent">MapComponent</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#isAuthenticated">isAuthenticated</a></li><li><a href="global.html#reportWebVitals">reportWebVitals</a></li><li><a href="global.html#router">router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Alert">Alert</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MapComponent">MapComponent</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#SubmissionPage">SubmissionPage</a></li><li><a href="global.html#isAuthenticated">isAuthenticated</a></li><li><a href="global.html#reportWebVitals">reportWebVitals</a></li><li><a href="global.html#router">router</a></li></ul>
     
 </nav>
 
@@ -125,7 +125,7 @@
 
         
             
-<h4 class="name" id="router"><span class="type-signature type-signature-constant">(constant) </span>router<span class="type-signature"> :JSX.Element</span></h4>
+<h4 class="name" id="router"><span class="type-signature type-signature-constant">(constant) </span>router<span class="type-signature"></span></h4>
 
 
 
@@ -134,13 +134,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>The main routing configuration of the application.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Main router setup for the application using React Router. Defines the application layoutand routes for various components. It includes routes for home, map, login, signup, submit,and a catch-all route for unmatched URLs that directs to an error page.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line40">line 40</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -180,21 +180,10 @@
 
 
 <div class="description usertext">
-    The main routing configuration of the application.
+    Main router setup for the application using React Router. Defines the application layoutand routes for various components. It includes routes for home, map, login, signup, submit,and a catch-all route for unmatched URLs that directs to an error page.
 </div>
 
 
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">JSX.Element</span>
-
-
-
-        </li>
-    </ul>
 
 
 
@@ -222,13 +211,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Alert component for displaying messages to the user.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Functional component for displaying an alert message.This component creates a div element with a role of 'alert', used for accessibility purposesto denote an important message on the page. The component accepts props that allow forcustomization of its class for styling and the message displayed.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Alert.js.html">components/Alert.js</a>, <a href="components_Alert.js.html#line11">line 11</a>
+        <a href="components_Alert.js.html">components/Alert.js</a>, <a href="components_Alert.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -317,7 +306,7 @@
 
             
 
-            <td class="description last">Component props.
+            <td class="description last">The properties passed to the Alert component.
                 <h6>Properties</h6>
                 
 
@@ -360,7 +349,7 @@
 
             
 
-            <td class="description last">CSS class name for styling the alert.</td>
+            <td class="description last">Additional CSS class names to apply to the alert div for styling.</td>
         </tr>
 
     
@@ -384,7 +373,7 @@
 
             
 
-            <td class="description last">Message to be displayed inside the alert.</td>
+            <td class="description last">The text or content displayed inside the alert.</td>
         </tr>
 
     
@@ -417,7 +406,7 @@
 
         
 <div class="param-desc">
-    Alert component with the specified message and className.
+    A JSX element representing the alert, styled according to the passed parameters.
 </div>
 
 
@@ -454,13 +443,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Main App component for managing user authentication and navigation.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>The App component serves as the main container for the application. It handles user authenticationstate, manages alerts, and provides a navigation context for child components.It checks and refreshes JWT tokens, handles logout functionality, and passes user-related datathrough the Outlet component to child routes.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="App.js.html">App.js</a>, <a href="App.js.html#line14">line 14</a>
+        <a href="App.js.html">App.js</a>, <a href="App.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -525,7 +514,7 @@
 
         
 <div class="param-desc">
-    Main App component.
+    A JSX element that includes the Alert component and an Outlet for nested routing.
 </div>
 
 
@@ -552,7 +541,7 @@
 
     
 
-    <h4 class="name" id="Home"><span class="type-signature"></span>Home<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    <h4 class="name" id="Home"><span class="type-signature"></span>Home<span class="signature">(handleSubmit)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
 
     
 
@@ -562,13 +551,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Home component for the home page.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Home component that serves as the landing page of the application.It displays a map and manages the application state for the 'text' content.The component also includes a function, `handleSubmit`, that is responsible forasynchronously fetching data from the backend server and updating the state with the response.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Home.js.html">components/Home.js</a>, <a href="components_Home.js.html#line8">line 8</a>
+        <a href="components_Home.js.html">components/Home.js</a>, <a href="components_Home.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -615,6 +604,56 @@
 
 
 
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handleSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Asynchronously fetches data from the backend server when invoked.       On a successful response where the server returns an 'OK' status, the response data       is set to the state's 'text'. Errors during the fetch process are logged to the console.       This function does not take any parameters and does not return any value.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
 
 
 
@@ -632,6 +671,10 @@
 <h5 class="h5-returns">Returns:</h5>
 
         
+<div class="param-desc">
+    A JSX element representing the home page.
+</div>
+
 
 
 <dl class="param-type">
@@ -656,7 +699,7 @@
 
     
 
-    <h4 class="name" id="Layout"><span class="type-signature"></span>Layout<span class="signature">(children)</span><span class="type-signature"> &rarr; {Element}</span></h4>
+    <h4 class="name" id="Layout"><span class="type-signature"></span>Layout<span class="signature">(children)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
 
     
 
@@ -666,13 +709,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Layout component for the main page layout.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Layout component that wraps around the main content of the application.It provides a consistent structure to the app by displaying a `Navbar` component at the topand rendering the `children` props below it, which represents the main content of the page.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Layout.js.html">components/Layout.js</a>, <a href="components_Layout.js.html#line10">line 10</a>
+        <a href="components_Layout.js.html">components/Layout.js</a>, <a href="components_Layout.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -749,13 +792,19 @@
 
             <td class="type">
             
+                
+<span class="param-type">React.ReactNode</span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last">The children components to render.</td>
+            <td class="description last">The child components to be rendered within the layout.       This is typically used to render the main content of a page.</td>
         </tr>
 
     
@@ -780,112 +829,8 @@
 <h5 class="h5-returns">Returns:</h5>
 
         
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Element</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="Login"><span class="type-signature"></span>Login<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Login component for user authentication.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Login.js.html">components/Login.js</a>, <a href="components_Login.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
 <div class="param-desc">
-    Login component.
+    A JSX element representing the common layout of the application.
 </div>
 
 
@@ -912,7 +857,7 @@
 
     
 
-    <h4 class="name" id="MapComponent"><span class="type-signature"></span>MapComponent<span class="signature">()</span><span class="type-signature"> &rarr; {Element}</span></h4>
+    <h4 class="name" id="Login"><span class="type-signature"></span>Login<span class="signature">(handleSubmit)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
 
     
 
@@ -922,437 +867,13 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Map component for displaying a map with a table of data.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Login component for handling user sign-in.It maintains state for username and password, communicates with a backend to authenticate the user,and navigates to the home page upon successful login. It also updates the application context withthe JWT token, user ID, and alert messages based on the authentication process outcome.</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Map.js.html">components/Map.js</a>, <a href="components_Map.js.html#line11">line 11</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Element</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="Navbar"><span class="type-signature"></span>Navbar<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Navbar component for the main page layout.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Navbar.js.html">components/Navbar.js</a>, <a href="components_Navbar.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">JSX.Element</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="Signup"><span class="type-signature"></span>Signup<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Signup component for user registration.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Signup.js.html">components/Signup.js</a>, <a href="components_Signup.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    Signup component.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">JSX.Element</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="isAuthenticated"><span class="type-signature"></span>isAuthenticated<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Check if the user is authenticated by verifying the presence of an access token.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns true if the user is authenticated, otherwise false.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="reportWebVitals"><span class="type-signature"></span>reportWebVitals<span class="signature">(onPerfEntry)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Function to measure and report web vitals.It imports web-vitals library and measures various performance metrics.</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reportWebVitals.js.html">reportWebVitals.js</a>, <a href="reportWebVitals.js.html#line6">line 6</a>
+        <a href="components_Login.js.html">components/Login.js</a>, <a href="components_Login.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -1424,6 +945,1027 @@
 
         <tr>
             
+                <td class="name"><code>handleSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Asynchronously handles the login form submission. Prevents the default form submit action.       Validates the user's credentials against the backend and updates the context state with the authentication results.       This function is invoked when the login form is submitted.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    A JSX element representing the login form and functionality.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="MapComponent"><span class="type-signature"></span>MapComponent<span class="signature">(handleRowClick, addMarker, tableData, mapRef)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>MapComponent is a functional component that integrates an interactive map using Leaflet.It initializes and displays a map, allowing users to add markers with a click. The component alsohandles fetching and displaying data in a tabular format, where clicking on a row centers the map onthe corresponding location.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Map.js.html">components/Map.js</a>, <a href="components_Map.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handleRowClick</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Handles the logic when a row in the table data is clicked. It centers       the map to the coordinates of the clicked row. Expects latitude and longitude as arguments.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addMarker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adds a marker to the map at the location where the user clicks.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The state variable that holds the data fetched from the backend to populate       the table list.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapRef</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A useRef hook to keep a mutable reference to the map instance for dynamic updates.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    A JSX element representing the map and the data table list.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="Navbar"><span class="type-signature"></span>Navbar<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Navbar component that provides navigation links across the application.It uses the react-router-dom 'Link' components for SPA-friendly navigation.The navbar is fixed to the top of the page and includes links to Home, Map, Login, Sign Up, and Submit pages.It's designed to collapse on smaller screens and be toggleable via a hamburger menu icon.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Navbar.js.html">components/Navbar.js</a>, <a href="components_Navbar.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    A JSX element that renders the navigation bar with links for the application.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="Signup"><span class="type-signature"></span>Signup<span class="signature">(handleInputChange, handleSubmit)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Signup component for handling user registration.It manages form inputs for user credentials including username, email, password, and password confirmation.Validates the form data and submits it to a backend server for registration. Provides feedback through alert messagesbased on the outcome of the signup process.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Signup.js.html">components/Signup.js</a>, <a href="components_Signup.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handleInputChange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Updates the formData state with input values as the user types.       Ensures that each input is tracked by its 'name' attribute, facilitating dynamic state updates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Manages the form submission process. It validates the password match,       constructs the payload, and handles the POST request to the backend server for user registration.       Based on the server's response, it sets alert messages and navigates the user to the login page upon success.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    A JSX element representing the signup form with controlled inputs for username, email, password, and password confirmation.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="SubmissionPage"><span class="type-signature"></span>SubmissionPage<span class="signature">(handleSubmit, geocodeAddress, formData, customIcon)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>SubmissionPage is a React component that allows users to submit information about student discounts.It includes form inputs for establishment details and discount descriptions. Upon submission,the address is geocoded to display a marker on a map. The form and map are interactively connectedso that submitting the form updates the map with a new marker.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Submit.js.html">components/Submit.js</a>, <a href="components_Submit.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handleSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Handles the form submission, validates form data, performs geocoding,       submits the data to the server, and updates the map if geocoding is successful.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>geocodeAddress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Converts the address entered into geographical coordinates (latitude and longitude)       using the OpenCage Geocode API.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">State variables to store user input and geocoded location.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>customIcon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Custom Leaflet icon to display markers with a unique appearance.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    A JSX element that renders a form for submitting discount information and a map showing the location.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isAuthenticated"><span class="type-signature"></span>isAuthenticated<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Determines if a user is authenticated by checking for an access token stored in cookies.This function retrieves the 'access_token' from the cookies and checks its existenceto validate user authentication.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if an access token exists, indicating authenticated state; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="reportWebVitals"><span class="type-signature"></span>reportWebVitals<span class="signature">(onPerfEntry)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Captures and logs key performance metrics using the web-vitals library. This function is designed to help developers understand how users are experiencing the application in termsof loading speed, interactivity, and visual stability. By measuring these metrics, developerscan identify and address performance bottlenecks to improve user experience.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="reportWebVitals.js.html">reportWebVitals.js</a>, <a href="reportWebVitals.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>import reportWebVitals from './reportWebVitals';reportWebVitals(console.log);</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>onPerfEntry</code></td>
             
 
@@ -1441,7 +1983,7 @@
 
             
 
-            <td class="description last">Callback function to handle performance entries.</td>
+            <td class="description last">- Callback function that receives data on each of the core web vitals:  - CLS (Cumulative Layout Shift): Measures the sum total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page.  - FID (First Input Delay): Measures the time from when a user first interacts with your site (i.e., when they click a link, tap on a button, or use a custom, JavaScript-powered control) to the time when the browser is actually able to respond to that interaction.  - FCP (First Contentful Paint): Measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.  - LCP (Largest Contentful Paint): Measures the render time of the largest image or text block visible within the viewport, relative to when the page first started loading.  - TTFB (Time to First Byte): Measures the time it takes for the browser to receive the first byte of the response after requesting a page from the server.  Each of these metrics provides insights into different aspects of the site performance and can guide optimization efforts.</td>
         </tr>
 
     
@@ -1486,7 +2028,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Apr 23 2024 22:19:29 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed Apr 24 2024 18:26:27 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -2,10 +2,13 @@ import {Link} from "react-router-dom";
 import "../styles/Navbar.css";
 
 /**
- * Navbar component for the main page layout.
+ * Navbar component that provides navigation links across the application.
+ * It uses the react-router-dom 'Link' components for SPA-friendly navigation.
+ * The navbar is fixed to the top of the page and includes links to Home, Map, Login, Sign Up, and Submit pages.
+ * It's designed to collapse on smaller screens and be toggleable via a hamburger menu icon.
  *
- * @component
- * @returns {JSX.Element}
+ * @function Navbar
+ * @returns {JSX.Element} A JSX element that renders the navigation bar with links for the application.
  */
 const Navbar = () => {
     return (

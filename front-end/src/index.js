@@ -1,9 +1,9 @@
 /**
  * @file index.js
- * @description This file is the entry point of the React application.
- * It sets up the routing and renders the main application component.
+ * @description Main entry point for the React application. This file initializes the router,
+ * sets up routes, and renders the main application components. It also includes utility functions
+ * for authentication and performance monitoring.
  */
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -26,21 +26,23 @@ import reportWebVitals from "./reportWebVitals";
 import Cookies from "js-cookie";
 
 /**
- * Check if the user is authenticated by verifying the presence of an access token.
- * @function
- * @name isAuthenticated
- * @returns {boolean} Returns true if the user is authenticated, otherwise false.
+ * Determines if a user is authenticated by checking for an access token stored in cookies.
+ * This function retrieves the 'access_token' from the cookies and checks its existence
+ * to validate user authentication.
+ *
+ * @returns {boolean} True if an access token exists, indicating authenticated state; otherwise, false.
  */
 const isAuthenticated = () => {
     const accessToken = Cookies.get('access_token');
     console.log("access token: ", accessToken);
     return !!accessToken; // Return true if access token exists, otherwise false
 };
-
 /**
- * The main routing configuration of the application.
- * @constant {JSX.Element}
- * @name router
+ * Main router setup for the application using React Router. Defines the application layout
+ * and routes for various components. It includes routes for home, map, login, signup, submit,
+ * and a catch-all route for unmatched URLs that directs to an error page.
+ *
+ * @returns {JSX.Element} A JSX element representing the configured router with all routes and layout.
  */
 const router = (
     <BrowserRouter>
@@ -64,7 +66,10 @@ const router = (
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<React.StrictMode>{router}</React.StrictMode>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+/**
+ * Initializes performance reporting for the application. Provides a mechanism to pass a function
+ * to log results or send to an analytics endpoint. More information can be found at the provided URL.
+ * 
+ * @see https://bit.ly/CRA-vitals
+ */
 reportWebVitals();

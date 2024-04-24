@@ -1,18 +1,20 @@
 import {useState} from "react";
 
 /**
- * Home component for the home page.
- * @component
- * @returns {JSX.Element}
+ * Home component that serves as the landing page of the application.
+ * It displays a map and manages the application state for the 'text' content.
+ * The component also includes a function, `handleSubmit`, that is responsible for
+ * asynchronously fetching data from the backend server and updating the state with the response.
+ *
+ * @function Home
+ * @param {function} handleSubmit - Asynchronously fetches data from the backend server when invoked.
+ *        On a successful response where the server returns an 'OK' status, the response data
+ *        is set to the state's 'text'. Errors during the fetch process are logged to the console.
+ *        This function does not take any parameters and does not return any value.
+ * @returns {JSX.Element} A JSX element representing the home page.
  */
 const Home = () => {
     const [text, setText] = useState("");
-
-    /**
-     * Handles the form submission for fetching data from the backend.
-     *
-     * @async
-     */
     const handleSubmit = async () => {
         const requestOptions = {
             method: 'GET',

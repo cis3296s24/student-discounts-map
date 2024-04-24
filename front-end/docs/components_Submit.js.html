@@ -1,4 +1,51 @@
-import React, { useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/Submit.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Alert">Alert</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#MapComponent">MapComponent</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#SubmissionPage">SubmissionPage</a></li><li><a href="global.html#isAuthenticated">isAuthenticated</a></li><li><a href="global.html#reportWebVitals">reportWebVitals</a></li><li><a href="global.html#router">router</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Submit.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {wait} from "@testing-library/user-event/dist/utils";
@@ -48,14 +95,14 @@ function SubmissionPage() {
 
     const geocodeAddress = async () => {
         const fullAddress = `${address}, ${city}, ${state}, ${zip}`;
-        const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
+        const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(fullAddress)}&amp;key=${process.env.REACT_APP_OPENCAGE_API_KEY}`;
 
         console.log("Rendering Marker with:", establishmentName, discount);
         
         return fetch(apiUrl) // Return the fetch promise
             .then(response => response.json())
             .then(data => {
-                if (data.results && data.results.length > 0) {
+                if (data.results &amp;&amp; data.results.length > 0) {
                     const { lat, lng } = data.results[0].geometry;
                     setLocation({ lat, lng }); // Update location state
                     return { lat, lng };
@@ -142,28 +189,28 @@ function SubmissionPage() {
 
 
     return (
-        <div className="submission-container mt-7">
-            <div className="map-container">
-                <MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} >
-                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-                    {location && (
-                        <Marker position={location} icon={customIcon} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
-                        <Popup>
-                            <strong>{DisplayData.establishmentName}</strong>
-                            <br />
+        &lt;div className="submission-container mt-7">
+            &lt;div className="map-container">
+                &lt;MapContainer center={[39.9526, -75.1652]} zoom={13} style={{ height: '400px', width: '100%' }} >
+                    &lt;TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&amp;copy; OpenStreetMap contributors" />
+                    {location &amp;&amp; (
+                        &lt;Marker position={location} icon={customIcon} key={`${DisplayData.establishmentName}-${DisplayData.discount}`}>
+                        &lt;Popup>
+                            &lt;strong>{DisplayData.establishmentName}&lt;/strong>
+                            &lt;br />
                             {DisplayData.discount}
-                        </Popup>
-                     </Marker>
+                        &lt;/Popup>
+                     &lt;/Marker>
                     )}
-                </MapContainer>
-            </div>
-            <div className="form-fields-container">
-                <div className="form-container">
-                    <h2 className="mb-4">Submit Your Student Discount Review</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <label htmlFor="establishmentName" className="form-label">Establishment Name</label>
-                            <input
+                &lt;/MapContainer>
+            &lt;/div>
+            &lt;div className="form-fields-container">
+                &lt;div className="form-container">
+                    &lt;h2 className="mb-4">Submit Your Student Discount Review&lt;/h2>
+                    &lt;form onSubmit={handleSubmit}>
+                        &lt;div className="mb-3">
+                            &lt;label htmlFor="establishmentName" className="form-label">Establishment Name&lt;/label>
+                            &lt;input
                                 type="text"
                                 className="form-control"
                                 placeholder="Ma and Pa's Bar and Grill"
@@ -172,9 +219,9 @@ function SubmissionPage() {
                                 onChange={(e) => setEstablishmentName(e.target.value)}
                                 required
                             />
-                        </div>
-                        <div className="address-fields mb-3">
-                            <input
+                        &lt;/div>
+                        &lt;div className="address-fields mb-3">
+                            &lt;input
                                 type="text"
                                 className="form-control"
                                 placeholder="Street"
@@ -182,7 +229,7 @@ function SubmissionPage() {
                                 onChange={(e) => setAddress(e.target.value)}
                                 required
                             />
-                            <input
+                            &lt;input
                                 type="text"
                                 className="form-control"
                                 placeholder="City"
@@ -190,7 +237,7 @@ function SubmissionPage() {
                                 onChange={(e) => setCity(e.target.value)}
                                 required
                             />
-                            <input
+                            &lt;input
                                 type="text"
                                 className="form-control"
                                 placeholder="State"
@@ -198,7 +245,7 @@ function SubmissionPage() {
                                 onChange={(e) => setState(e.target.value)}
                                 required
                             />
-                            <input
+                            &lt;input
                                 type="text"
                                 className="form-control"
                                 placeholder="Zip Code"
@@ -206,10 +253,10 @@ function SubmissionPage() {
                                 onChange={(e) => setZip(e.target.value)}
                                 required
                             />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="discount" className="form-label">Discount Description</label>
-                            <textarea
+                        &lt;/div>
+                        &lt;div className="mb-3">
+                            &lt;label htmlFor="discount" className="form-label">Discount Description&lt;/label>
+                            &lt;textarea
                                 className="form-control"
                                 placeholder='Bogo Fridays for temple students'
                                 id="discount"
@@ -218,14 +265,39 @@ function SubmissionPage() {
                                 required
                                 rows="4"
                             />
-                        </div>                        
-                        <button type="submit" className="btn btn-primary">Submit Review</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        &lt;/div>                        
+                        &lt;button type="submit" className="btn btn-primary">Submit Review&lt;/button>
+                    &lt;/form>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
     );
 }
 
 
 export default SubmissionPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed Apr 24 2024 18:26:27 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

@@ -6,11 +6,14 @@ import {useEffect, useState} from "react";
 import Alert from "./components/Alert";
 
 /**
- * Main App component for managing user authentication and navigation.
+ * The App component serves as the main container for the application. It handles user authentication
+ * state, manages alerts, and provides a navigation context for child components.
+ * It checks and refreshes JWT tokens, handles logout functionality, and passes user-related data
+ * through the Outlet component to child routes.
  *
- * @component
- * @returns {JSX.Element} Main App component.
+ * @returns {JSX.Element} A JSX element that includes the Alert component and an Outlet for nested routing.
  */
+
 function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);

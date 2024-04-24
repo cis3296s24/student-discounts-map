@@ -2,10 +2,16 @@ import {useState} from "react";
 import {useNavigate, useOutletContext} from "react-router-dom";
 
 /**
- * Login component for user authentication.
+ * Login component for handling user sign-in.
+ * It maintains state for username and password, communicates with a backend to authenticate the user,
+ * and navigates to the home page upon successful login. It also updates the application context with
+ * the JWT token, user ID, and alert messages based on the authentication process outcome.
  *
- * @component
- * @returns {JSX.Element} Login component.
+ * @function Login
+ * @param {function} handleSubmit - Asynchronously handles the login form submission. Prevents the default form submit action.
+ *        Validates the user's credentials against the backend and updates the context state with the authentication results.
+ *        This function is invoked when the login form is submitted.
+ * @returns {JSX.Element} A JSX element representing the login form and functionality.
  */
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -17,13 +23,7 @@ const Login = () => {
     const { setAlertClassName } = useOutletContext()
     const { setAlertMessage } = useOutletContext()
 
-    /**
-     * Handles the form submission for user login.
-     *
-     * @async
-     * @param {Event} e - The form submission event.
-     * @returns {Promise<void>}
-     */
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
