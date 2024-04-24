@@ -83,17 +83,18 @@ const MapComponent = () => {
             <div
               className="submission-box"
               key={index}
-              onClick={() => handleRowClick(data.latitude, data.longitude)}
+              onClick={() => handleRowClick(data[11], data[12])}
             >
-              <div className="establishment-name">{data.establishmentName}</div>
-              <div className="address">{`${data.address}, ${data.city}, ${data.state}, ${data.zip}`}</div>
-              <div className="discount-description">{data.discount}</div>
+              <div className="establishment-name">{data[1]}</div>
+              <div className="address">{`${data[2]}, ${data[3]}, ${data[4]}, ${data[5]}`}</div>
+              <div className="discount-description">{data[6]}</div>
             </div>
           ))}
         </div>
       </div>
     </div>
   );
+
 };
 
 export default MapComponent;
