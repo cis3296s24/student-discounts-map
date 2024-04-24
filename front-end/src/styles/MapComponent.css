@@ -1,0 +1,48 @@
+.map-page-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center the content horizontally */
+    margin-top: 120px; /* Adjust top margin as necessary */
+    padding: 0 20px; /* Add horizontal padding */
+  }
+  
+  .map-container {
+    height: 450px;
+    width: 450px;
+    margin-right: 20px; /* Add space between the map and submissions */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide any overflowing content */
+    position: relative; /* Needed for Leaflet map to position correctly */
+  }
+  
+  .map {
+    height: 450px; /* Ensure the map is a square */
+    width: 450px;
+  }
+  
+  .submissions-container {
+    width: calc(100% - 490px); /* Subtract the width of the map and margin */
+    height: 450px; /* Make submissions box the same height as the map */
+    overflow-y: auto;
+  }
+  
+  .submission-box {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd; /* Optional for styling */
+  }
+  
+  .establishment-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .address {
+    margin-bottom: 5px;
+  }
+  
+  .discount-description {
+    font-style: italic;
+  }
