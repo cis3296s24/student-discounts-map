@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "../styles/MapComponent.css";
 
 const MapComponent = () => {
   const [tableData, setTableData] = useState([]);
@@ -72,41 +73,26 @@ const MapComponent = () => {
   }, []);
 
   return (
-      <div>
-        <div id="map" style={{ height: "500px" }}></div>
-        <table className="table">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Establishment Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">State</th>
-            <th scope="col">Zip</th>
-            <th scope="col">Discount</th>
-            <th scope="col">Submitter ID</th>
-          </tr>
-          </thead>
-          <tbody>
-          {tableData.map((data, index) => (
-              <tr
-                  key={index}
-                  onClick={() => handleRowClick(data[11], data[12])}
-                  style={{ cursor: "pointer" }}
-              >
-                <th scope="row">{data[0]}</th>
-                <td>{data[1]}</td>
-                <td>{data[2]}</td>
-                <td>{data[3]}</td>
-                <td>{data[4]}</td>
-                <td>{data[5]}</td>
-                <td>{data[6]}</td>
-                <td>{data[13]}</td>
-              </tr>
-          ))}
-          </tbody>
-        </table>
+    <div className="map-page-container">
+      <div className="map-container">
+        <div id="map" className="map"></div>
       </div>
+      <div className="submissions-container">
+        <div className="submissions-scrollable">
+          {tableData.map((data, index) => (
+            <div
+              className="submission-box"
+              key={index}
+              onClick={() => handleRowClick(data.latitude, data.longitude)}
+            >
+              <div className="establishment-name">{data.establishmentName}</div>
+              <div className="address">{`${data.address}, ${data.city}, ${data.state}, ${data.zip}`}</div>
+              <div className="discount-description">{data.discount}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
