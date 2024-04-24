@@ -1,0 +1,42 @@
+.popup {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-width: 300px; /* Adjust width as needed */
+}
+
+.place-name {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.image-container {
+    margin-bottom: 10px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.address,
+.discount,
+.submitter {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.edit-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.edit-icon i {
+    color: #666;
+}

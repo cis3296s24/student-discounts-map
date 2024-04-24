@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../styles/MapComponent.css";
+import "../styles/popup.css";
 
 const MapComponent = () => {
   const [tableData, setTableData] = useState([]);
@@ -70,6 +71,27 @@ const MapComponent = () => {
     retrieveData().then(() => {
       console.log("Data retrieved");
     });
+      // This function will be used to create markers and bind popups
+  const createMarker = (submission) => {
+    const marker = L.marker([submission.latitude, submission.longitude], { title: submission.establishmentName }).addTo(map);
+    
+    // Create a popup element
+    const popupContent = `
+      <div class="popup">
+        <h2 class="place-name">${submission.establishmentName}</h2>
+        ${submission.image ? `<div class="image-container"><img src="${submission.image}" alt="${submission.establishmentName}"></div>` : ''}
+        <p class="address">${submission.address}, ${submission.city}, ${submission.state}, ${submission.zip}</p>
+        <p class="discount">${submission.discount}</p>
+        <p class="submitter">Submitted by: ${submission.submitterID}</p>
+      </div>
+    `;
+
+    // Bind the popup to the marker
+    marker.bindPopup(popupContent);
+  };
+
+  // Add a marker for each submission
+  tableData.forEach(submission => createMarker(submission));
   }, []);
 
   return (
@@ -79,15 +101,15 @@ const MapComponent = () => {
       </div>
       <div className="submissions-container">
         <div className="submissions-scrollable">
-          {tableData.map((data, index) => (
+          {tableData.map((submission, index) => (
             <div
               className="submission-box"
               key={index}
-              onClick={() => handleRowClick(data[11], data[12])}
+              onClick={() => handleRowClick(submission.latitude, submission.longitude)}
             >
-              <div className="establishment-name">{data[1]}</div>
-              <div className="address">{`${data[2]}, ${data[3]}, ${data[4]}, ${data[5]}`}</div>
-              <div className="discount-description">{data[6]}</div>
+              <div className="establishment-name">{submission.establishmentName}</div>
+              <div className="address">{`${submission.address}, ${submission.city}, ${submission.state}, ${submission.zip}`}</div>
+              <div className="discount-description">{submission.discount}</div>
             </div>
           ))}
         </div>
