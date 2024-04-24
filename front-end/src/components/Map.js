@@ -2,6 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+/**
+ * Map component for displaying a map with a table of data.
+ *
+ * @component
+ * @returns {Element}
+ */
 const MapComponent = () => {
   const [tableData, setTableData] = useState([]);
   const mapRef = useRef(null);

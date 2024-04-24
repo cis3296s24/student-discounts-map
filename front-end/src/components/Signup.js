@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import {useNavigate, useOutletContext} from 'react-router-dom';
 
+/**
+ * Signup component for user registration.
+ *
+ * @component
+ * @returns {JSX.Element} Signup component.
+ */
 const Signup = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -14,7 +20,11 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    //update input field state
+    /**
+     * Updates the input field state based on user input.
+     *
+     * @param {Event} e - The input change event.
+     */
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -23,7 +33,11 @@ const Signup = () => {
         });
     };
 
-    //backend signup logic
+    /**
+     * Handles the form submission for user signup.
+     *
+     * @param {Event} e - The form submission event.
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
 

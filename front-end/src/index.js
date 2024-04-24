@@ -1,3 +1,9 @@
+/**
+ * @file index.js
+ * @description This file is the entry point of the React application.
+ * It sets up the routing and renders the main application component.
+ */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -19,12 +25,23 @@ import ErrorPage from "./components/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
 import Cookies from "js-cookie";
 
+/**
+ * Check if the user is authenticated by verifying the presence of an access token.
+ * @function
+ * @name isAuthenticated
+ * @returns {boolean} Returns true if the user is authenticated, otherwise false.
+ */
 const isAuthenticated = () => {
     const accessToken = Cookies.get('access_token');
     console.log("access token: ", accessToken);
     return !!accessToken; // Return true if access token exists, otherwise false
 };
 
+/**
+ * The main routing configuration of the application.
+ * @constant {JSX.Element}
+ * @name router
+ */
 const router = (
     <BrowserRouter>
         <Layout>

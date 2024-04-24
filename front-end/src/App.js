@@ -5,6 +5,12 @@ import Cookies from "js-cookie";
 import {useEffect, useState} from "react";
 import Alert from "./components/Alert";
 
+/**
+ * Main App component for managing user authentication and navigation.
+ *
+ * @component
+ * @returns {JSX.Element} Main App component.
+ */
 function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -15,6 +21,9 @@ function App() {
 
   const navigate = useNavigate();
 
+    /**
+     * Logs out the user by clearing cookies and resetting states.
+     */
   const logOut = () => {
     // Clear all cookies
     Object.keys(Cookies.get()).forEach(cookie => Cookies.remove(cookie));
@@ -27,7 +36,9 @@ function App() {
   }
 
   useEffect(() => {
-    // TODO: Refresh code
+      /**
+       * Refreshes the JWT token by sending a GET request to the /refresh endpoint.
+       */
     if(jwtToken === "") {
       const requestOptions = {
         method: "GET",

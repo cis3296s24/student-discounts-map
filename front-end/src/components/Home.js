@@ -1,8 +1,18 @@
 import {useState} from "react";
 
+/**
+ * Home component for the home page.
+ * @component
+ * @returns {JSX.Element}
+ */
 const Home = () => {
     const [text, setText] = useState("");
 
+    /**
+     * Handles the form submission for fetching data from the backend.
+     *
+     * @async
+     */
     const handleSubmit = async () => {
         const requestOptions = {
             method: 'GET',
